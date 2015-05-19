@@ -120,13 +120,23 @@ $cont1++;
                               </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <label class="col-md-5">Tipo de Venta:</label>
+                                <div class="form-group col-md-7 no-padding">                                
+                                  <select class="form-control" name="tipo_venta" id="tipo_venta">
+                                    <option value="FACTURA" selected>FACTURA</option>
+                                    <option value="NOTA">NOTA VENTA</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-2">
                               <div class="form-group">
                                 <div id="estado"><h3></h3></div>  
                               </div>
                             </div>
-
-                            <div class="col-md-3"></div>
                           </div>
                         </div>
 
@@ -175,6 +185,33 @@ $cont1++;
                                 <div class="form-group col-md-9 no-padding">                                
                                   <input type="text" name="correo"  id="correo" required class="form-control" />
                                 </div> 
+                              </div>
+                            </div>
+
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <label class="col-md-5">Autorización:</label>
+                                <div class="form-group col-md-7 no-padding">                                
+                                  <input type="text" name="autorizacion"  id="autorizacion" required class="form-control" />
+                                </div> 
+                              </div>
+                            </div>
+
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <label class="col-md-5">Fecha autorización:</label>
+                                <div class="form-group col-md-7 no-padding">                                
+                                  <input type="text" name="fecha_auto"  id="fecha_auto" readonly required class="form-control" />
+                                </div> 
+                              </div>
+                            </div>
+
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <label class="col-md-5">Fecha caducidad:</label>
+                                <div class="form-group col-md-7 no-padding">                                
+                                  <input type="text" name="fecha_caducidad"  id="fecha_caducidad" readonly required class="form-control" />
+                                </div>
                               </div>
                             </div>
 
