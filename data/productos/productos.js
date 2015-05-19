@@ -493,7 +493,8 @@ function inicio() {
     alertify.set({ delay: 1000 });
     // jQuery().UItoTop({
     //     easingType: 'easeOutQuart'
-    // });    
+    // });  
+    $("#cod_prod").focus();  
     
     function getDoc(frame) {
         var doc = null;     

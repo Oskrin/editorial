@@ -133,9 +133,9 @@ $cont1++;
                             </div>
 
                             <div class="col-md-2">
-                              <div class="form-group">
-                                <div id="estado"><h3></h3></div>  
-                              </div>
+                              <!-- <div class="form-group"> -->
+                                <div id="estado" style="margin-top: -10px"><h3></h3></div>  
+                              <!-- </div> -->
                             </div>
                           </div>
                         </div>
