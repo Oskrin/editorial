@@ -91,9 +91,11 @@ function inicio(){
     $("#equipos_reparados").on("click",equipos_reparados);
     $("#equipos_en_reparacion").on("click",equipos_en_reparacion);
     $("#equipos_entregados").on("click",equipos_entregados);
+    
     $("#autorizaciones_cliente").on("click",autorizaciones_cliente);
     $("#autorizaciones_cliente_fechas").on("click",autorizaciones_cliente_fechas);
     $("#autorizaciones_cliente_caducidad").on("click",autorizaciones_cliente_caducidad);
+    
     $("#gastos").on("click",gastos);
     $("#gastos_general").on("click",gastos_general);
     $("#buscar_serie").on("click",buscar_serie);

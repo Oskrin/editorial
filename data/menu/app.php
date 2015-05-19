@@ -218,6 +218,15 @@ print'
                       </ul>                    
                     </li>
 
+                    <li>
+                      <a href=""><i class="fa fa-circle-o"></i>Autorizaciones<i class="fa fa-angle-left pull-right"></i></a>
+                      <ul class="treeview-menu">
+                        <li><a href="" id="autorizaciones_cliente"><i class="fa fa-files-o"></i>Clientes</a></li>
+                        <li><a href="" id="autorizaciones_cliente_fechas"><i class="fa fa-files-o"></i>Clientes Fechas</a></li>                        
+                        <li><a href="" id="autorizaciones_cliente_caducidad"><i class="fa fa-files-o"></i>Caducidad Clientes</a></li>
+                      </ul>                    
+                    </li>
+
                     <li><a href="" id="reporte_utilidad_producto"><i class="fa fa-circle-o"></i>Utilidad de producto</a></li>
                     <li><a href="" id="reporte_utilidad_factura"><i class="fa fa-circle-o"></i>Utilidad por factura</a></li>
                     <li><a href="" id="reporte_utilidad_factura_general"><i class="fa fa-circle-o"></i>utilidad General Facturas</a></li>
