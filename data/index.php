@@ -35,12 +35,12 @@
                 </label>
               </div>                        
             </div><!-- /.col -->
-            <div class="col-xs-4">
+            <div class="col-xs-8">
               <button type="submit" class="btn btn-primary btn-block btn-flat" id="btnIngreso" >INGRESAR</button>
             </div><!-- /.col -->
-            <div class="col-xs-4">
+            <!-- <div class="col-xs-4">
               <button type="submit" class="btn btn-primary btn-block btn-flat" id="btnRetornar">RETORNAR</button>
-            </div>
+            </div> -->
           </div>
         </form>
 
