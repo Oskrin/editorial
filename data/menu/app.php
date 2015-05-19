@@ -149,7 +149,7 @@ print'
                       <a href=""><i class="fa fa-circle-o"></i>Externas<i class="fa fa-angle-left pull-right"></i></a>
                       <ul class="treeview-menu">
                         <li><a href="../cxc_externa"><i class="fa fa-circle-o"></i>Cuentas por cobrar</a></li>
-                        <li><a href="../cxp_externa"><i class="fa fa-circle-o"></i>Cuentas por pagar</a></li>
+                        <!--<li><a href="../cxp_externa"><i class="fa fa-circle-o"></i>Cuentas por pagar</a></li>-->
                       </ul>
                     </li>
                   </ul>
