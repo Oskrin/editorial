@@ -23,8 +23,6 @@ include('../menu/app.php');
     <link href="../../dist/css/alertify.default.css" id="toggleCSS" rel="stylesheet" />
     <link href="../../dist/css/jquery-ui-1.10.4.custom.css" rel="stylesheet" type="text/css"/>            
     <link href="../../dist/css/ui.jqgrid.css" rel="stylesheet" type="text/css"/> 
-
-    
   </head>
   <body class="skin-blue">
     <div class="wrapper">
@@ -36,7 +34,7 @@ include('../menu/app.php');
             Registro Clientes
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Ingresos</a></li>
+            <li><a href=""><i class="fa fa-dashboard"></i> Ingresos</a></li>
             <li class="active">Clientes</li>
           </ol>
         </section>

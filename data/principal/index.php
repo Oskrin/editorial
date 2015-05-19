@@ -49,7 +49,7 @@ include('../menu/app.php');
                   <div class="row">
                    <div class="col-mx-12">
                     <div align="center">
-                        <img src="../../images/logo_empresa.jpg" width="70%" /> 
+                        <img src="../../images/logo_empresa.png" width="70%" /> 
                     </div>
                    </div>
                   </div>
