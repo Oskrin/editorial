@@ -1927,7 +1927,7 @@ function inicio() {
         e.preventDefault();
     });
 
-    $("#btnImprimir").attr("disabled", true);
+    // $("#btnImprimir").attr("disabled", true);
     $("#btncargar").on("click", abrirDialogo);
     $("#btnAgregar").on("click", agregar);
     $("#btnGuardarSeries").on("click", guardar_serie);
