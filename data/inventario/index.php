@@ -102,21 +102,21 @@ $cont1 = 0;
 
                         <div class="row">
                          <div class="col-mx-12">
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                               <div class="form-group">
                                 <label>CÓDIGO BARRAS</label>
                                 <input type="text" name="codigo_barras"  id="codigo_barras" placeholder="Buscar..." class="form-control" />
                               </div>  
                             </div>
 
-                            <div class="col-md-3 no-padding">
+                            <div class="col-md-3">
                               <div class="form-group">
                                 <label>CÓDIGO</label>
                                 <input type="text" name="codigo"  id="codigo" placeholder="Buscar..." class="form-control" />
                               </div>  
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                               <div class="form-group">
                                 <label>PRODUCTO</label>
                                 <input type="text" name="producto"  id="producto" placeholder="Buscar..." class="form-control" />

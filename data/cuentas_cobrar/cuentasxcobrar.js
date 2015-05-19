@@ -86,15 +86,15 @@ function enter1(e) {
 function comprobar() {
     if ($("#id_cliente").val() === "") {
         $("#ruc_ci").focus();
-        alertify.alert("Ingrese un cliente");
+        alertify.error("Ingrese un cliente");
     } else {
         if ($("#ruc_ci").val() === "") {
             $("#ruc_ci").focus();
-            alertify.alert("Identificación del cliente");
+            alertify.error("Identificación del cliente");
         }else{
             if ($("#forma_pago").val() === "") {
                 $("#forma_pago").focus();
-                alertify.alert("Error... Seleccione forma de pago");
+                alertify.error("Error... Seleccione forma de pago");
             }
         }
     }
@@ -102,11 +102,11 @@ function comprobar() {
 
 function entrar() {
     if ($("#num_factura").val() === "") {
-        alertify.alert("Error... Seleccione una factura");
+        alertify.error("Error... Seleccione una factura");
     } else {
         if ($("#valor_pagado").val() === "") {
             $("#valor_pagado").focus();
-            alertify.alert("Ingrese un valor");
+            alertify.error("Ingrese un valor");
         } else {
             if(parseFloat($("#valor_pagado").val()) <= parseFloat($("#saldo2").val())) {
             $("#list").jqGrid("clearGridData", true);
@@ -142,7 +142,7 @@ function cargar_facturas(){
     if (id === "") {
         $("#num_factura").val("");
         $("#ruc_ci").focus();
-        alertify.alert("Error... Seleccione un cliente");
+        alertify.error("Error... Seleccione un cliente");
     } else {
         $("#list2").jqGrid('setGridParam', {
             url: 'xmlFacturas_venta.php?id_cliente=' + id + '&tipo=' + $("#tipo_pago").val()   , 
@@ -157,22 +157,22 @@ function guardar_pagos(){
 
     if ($("#id_cliente").val() === "") {
         $("#ruc_ci").focus();
-        alertify.alert("Ingrese un cliente");
+        alertify.error("Ingrese un cliente");
     } else {
         if ($("#ruc_ci").val() === "") {
             $("#ruc_ci").focus();
-            alertify.alert("Identificación del cliente");
+            alertify.error("Identificación del cliente");
         }else{
             if ($("#forma_pago").val() === "0") {
                 $("#forma_pago").focus();
-                alertify.alert("Error... Seleccione forma de pago");
+                alertify.error("Error... Seleccione forma de pago");
             }else{
                 if ($("#tipo_pago").val() === "") {
                     $("#tipo_pago").focus();
-                    alertify.alert("Error... Seleccione tipo de pago");
+                    alertify.error("Error... Seleccione tipo de pago");
                 }else{
                     if (tam.length === 0) {
-                        alertify.alert("Error... Ingrese un pago");
+                        alertify.error("Error... Ingrese un pago");
                     }else{
                         var v1 = new Array();
                         var v2 = new Array();
@@ -404,6 +404,7 @@ return true;
 }
 
 function inicio() {
+    alertify.set({ delay: 1000 });
     //////////////para hora///////////
     show();
     ///////////////////
