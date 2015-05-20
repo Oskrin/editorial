@@ -613,8 +613,7 @@ jQuery("#list2").jqGrid({
     pager: jQuery('#pager2'),
     shrinkToFit: true,
     sortorder: 'asc',
-    caption: 'Lista de Facturas',
-    
+    caption: 'Lista de Facturas',   
     viewrecords: true,
     ondblClickRow: function(rowid){
         var id = jQuery("#list2").jqGrid('getGridParam', 'selrow');
@@ -634,10 +633,10 @@ jQuery("#list2").jqGrid({
               $("#tablaNuevo tbody").empty(); 
               $.ajax({
                 type: "POST",
-		url: "buscar_pagos.php",	
-		data: "id="+ret.ids,
-		dataType: 'json',
-		success: function(response) {
+        		url: "buscar_pagos.php",	
+        		data: "id="+ret.ids,
+        		dataType: 'json',
+        		success: function(response) {
                 $("#tablaNuevo").css('display','inline-table');
                 for (var i = 0; i < response.length; i=i+3) {
                         $("#tablaNuevo tbody").append( "<tr>" +
@@ -686,10 +685,10 @@ jQuery("#list2").jqGrid('navButtonAdd', '#pager2', {caption: "Añadir",
               $("#tablaNuevo tbody").empty(); 
               $.ajax({
                 type: "POST",
-		url: "buscar_pagos.php",	
-		data: "id="+ret.ids,
-		dataType: 'json',
-		success: function(response) {
+        		url: "buscar_pagos.php",	
+        		data: "id="+ret.ids,
+        		dataType: 'json',
+        		success: function(response) {
                 $("#tablaNuevo").css('display','inline-table');
                 for (var i = 0; i < response.length; i=i+3) {
                         $("#tablaNuevo tbody").append( "<tr>" +
@@ -761,8 +760,7 @@ jQuery("#list2").jqGrid('navButtonAdd', '#pager2', {caption: "Añadir",
             $.getJSON('retornar_pagos_venta.php?com=' + valor, function(data) {
             var tama = data.length;
             if (tama !== 0) {
-            for (var i = 0; i < tama; i = i + 9)
-                {
+            for (var i = 0; i < tama; i = i + 9) {
                 $("#fecha_actual").val(data[i]);
                 $("#hora_actual").val(data[i + 1 ]);
                 $("#digitador").val(data[i + 2 ] + " " + data[i + 3 ] );
@@ -778,8 +776,7 @@ jQuery("#list2").jqGrid('navButtonAdd', '#pager2', {caption: "Añadir",
          $.getJSON('retornar_pagos_venta2.php?com=' + valor, function(data) {
          var tama = data.length;
          if (tama !== 0) {
-         for (var i = 0; i < tama; i = i + 8)
-         {
+         for (var i = 0; i < tama; i = i + 8) {
             var datarow = {ids_pagos: data[i], num_factura: data[i + 1], tipo_factura: data[i + 2], fecha_factura: data[i + 3], totalcxc: data[i + 4], valor_pagado: data[i + 5], saldo: data[i + 6]};
             var su = jQuery("#list").jqGrid('addRowData', data[i], datarow);
             $("#observaciones").val(data[i + 7]);
@@ -850,8 +847,7 @@ jQuery("#list2").jqGrid('navButtonAdd', '#pager2', {caption: "Añadir",
          $.getJSON('retornar_pagos_venta.php?com=' + valor, function(data) {
          var tama = data.length;
          if (tama !== 0) {
-         for (var i = 0; i < tama; i = i + 9)
-             {
+         for (var i = 0; i < tama; i = i + 9) {
              $("#fecha_actual").val(data[i]);
              $("#hora_actual").val(data[i + 1 ]);
              $("#digitador").val(data[i + 2 ] + " " + data[i + 3 ] );
@@ -867,8 +863,7 @@ jQuery("#list2").jqGrid('navButtonAdd', '#pager2', {caption: "Añadir",
          $.getJSON('retornar_pagos_venta2.php?com=' + valor, function(data) {
          var tama = data.length;
          if (tama !== 0) {
-         for (var i = 0; i < tama; i = i + 8)
-         {
+         for (var i = 0; i < tama; i = i + 8) {
             var datarow = {ids_pagos: data[i], num_factura: data[i + 1], tipo_factura: data[i + 2], fecha_factura: data[i + 3], totalcxc: data[i + 4], valor_pagado: data[i + 5], saldo: data[i + 6]};
             var su = jQuery("#list").jqGrid('addRowData', data[i], datarow);
             $("#observaciones").val(data[i + 7]);

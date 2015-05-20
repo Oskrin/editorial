@@ -205,6 +205,17 @@ $cont1 = 0;
                                     <!--<div id="pager"></div>-->   
                                 </div>
                              </div>
+                             <hr />
+                             <div class="col-mx-12">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="col-md-4" >Observaciones:</label>
+                                <div class="form-group col-md-8 no-padding">                                
+                                  <textarea class="form-control" name="observaciones" id="observaciones" rows="3"></textarea>
+                                </div> 
+                              </div>  
+                            </div> 
+                         </div>
                             </div> 
 
                             <div class="tab-pane" id="tab_2">

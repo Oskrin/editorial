@@ -279,7 +279,7 @@ return true;
 }
 
 function inicio() {
-     alertify.set({ delay: 1000 });
+    alertify.set({ delay: 1000 });
     $("[data-mask]").inputmask();
     show();
     
