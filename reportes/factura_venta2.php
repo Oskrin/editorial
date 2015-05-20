@@ -82,63 +82,35 @@
     }
     ////////detalles
 
-    $sql = pg_query("select cantidad,articulo,precio_venta,total_venta from  detalle_factura_venta,productos where id_factura_venta = '".$_GET['id']."' and detalle_factura_venta.cod_productos = productos.cod_productos and productos.iva= 'Si'");
+    $sql = pg_query("select cantidad,articulo,precio_venta,total_venta from  detalle_factura_venta,productos where id_factura_venta = '".$_GET['id']."' and detalle_factura_venta.cod_productos = productos.cod_productos");
+
     $yy = 76;
-    $iva_base = 1.12;
-    $subtotal = 0.0;
     $pdf->SetTextColor(0,0,0);
     while($row = pg_fetch_row($sql)){
-        $temp = $row[3] / $iva_base;        
         $pdf->Text(15, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);    
         $pdf->Text(25, $yy, maxCaracter(utf8_decode($row[1]),50),0,0, 'L',0);    
         $pdf->Text(95, $yy, maxCaracter(utf8_decode($row[2]),6),0,0, 'L',0);    
-        $pdf->Text(120, $yy, maxCaracter(number_format($temp,2,',','.'),6),0,0, 'L',0);            
+        $pdf->Text(120, $yy, maxCaracter(utf8_decode($row[3]),6),0,0, 'L',0);            
 
         $pdf->Text(165, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);    
         $pdf->Text(180, $yy, maxCaracter(utf8_decode($row[1]),50),0,0, 'L',0);    
         $pdf->Text(245, $yy, maxCaracter(utf8_decode($row[2]),6),0,0, 'L',0);    
-        $pdf->Text(270, $yy, maxCaracter(number_format($temp,2,',','.'),6),0,0, 'L',0);    
+        $pdf->Text(270, $yy, maxCaracter(utf8_decode($row[3]),6),0,0, 'L',0);    
         $yy = $yy + 5;
-        $subtotal = $subtotal + $temp;                      
-        //$subtotal =  number_format($subtotal,2,',','.');          
     }
-    $sql = pg_query("select cantidad,articulo,precio_venta,total_venta from  detalle_factura_venta,productos where id_factura_venta = '".$_GET['id']."' and detalle_factura_venta.cod_productos = productos.cod_productos and productos.iva= 'No'");    
-    $pdf->SetTextColor(0,0,0);
-    while($row = pg_fetch_row($sql)){
-        $temp_1 =  number_format($row[3],2,',','.');
-        $pdf->Text(15, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);    
-        $pdf->Text(25, $yy, maxCaracter(utf8_decode($row[1]),50),0,0, 'L',0);    
-        $pdf->Text(95, $yy, maxCaracter(utf8_decode($row[2]),6),0,0, 'L',0);    
-        $pdf->Text(120, $yy, maxCaracter($temp_1,6),0,0, 'L',0);            
+    /////////pie
+    $subtotal = $iva12 + $iva0;
+    $pdf->Text(120, 173, maxCaracter($subtotal,3),0,1, 'L',0);    
+    $pdf->Text(120, 179, maxCaracter(utf8_decode($descuento_venta),3),0,1, 'L',0);    
+    $pdf->Text(120, 185, maxCaracter(utf8_decode($iva_venta),3),0,1, 'L',0);    
+    $pdf->Text(120, 191, maxCaracter(utf8_decode($iva0),3),0,1, 'L',0);    
+    $pdf->Text(120, 197, maxCaracter(utf8_decode($total_venta),3),0,1, 'L',0);    
 
-        $pdf->Text(165, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);    
-        $pdf->Text(180, $yy, maxCaracter(utf8_decode($row[1]),50),0,0, 'L',0);    
-        $pdf->Text(245, $yy, maxCaracter(utf8_decode($row[2]),6),0,0, 'L',0);    
-        $pdf->Text(270, $yy, maxCaracter($temp_1,6),0,0, 'L',0);    
-        $yy = $yy + 5;        
-        
-    }
-    /////////pie    
-    $subtotal = number_format($subtotal,2,',','.');      
-    $descuento_venta = number_format($descuento_venta,2,',','.');      
-    $iva_venta = number_format($iva_venta,2,',','.');      
-    $iva0 = number_format($iva0,2,',','.');      
-    $total_venta = number_format($total_venta,2,',','.');      
-
-
-    $pdf->Text(120, 173, maxCaracter($subtotal,5),0,1, 'L',0);    
-    $pdf->Text(120, 179, maxCaracter($descuento_venta,5),0,1, 'L',0);     
-    $pdf->Text(120, 185, maxCaracter($iva_venta,5),0,1, 'L',0);    
-    $pdf->Text(98, 186, '12',0,1, 'L',0);    
-    $pdf->Text(120, 191, maxCaracter($iva0,5),0,1, 'L',0);    
-    $pdf->Text(120, 197, maxCaracter($total_venta,5),0,1, 'L',0);    
-
-    $pdf->Text(275, 173, maxCaracter($subtotal,5),0,1, 'L',0);    
-    $pdf->Text(275, 179, maxCaracter($descuento_venta,5),0,1, 'L',0);    
-    $pdf->Text(275, 185, maxCaracter($iva_venta,5),0,1, 'L',0);    
-    $pdf->Text(249, 186, '12',0,1, 'L',0); 
-    $pdf->Text(275, 191, maxCaracter($iva0,5),0,1, 'L',0);    
-    $pdf->Text(275, 197, maxCaracter($total_venta,5),0,1, 'L',0);    
+    $pdf->Text(275, 173, maxCaracter($subtotal,3),0,1, 'L',0);    
+    $pdf->Text(275, 179, maxCaracter(utf8_decode($descuento_venta),3),0,1, 'L',0);    
+    $pdf->Text(275, 185, maxCaracter(utf8_decode($iva_venta),3),0,1, 'L',0);    
+    $pdf->Text(275, 191, maxCaracter(utf8_decode($iva0),3),0,1, 'L',0);    
+    $pdf->Text(275, 197, maxCaracter(utf8_decode($total_venta),3),0,1, 'L',0);    
 
 
     $pdf->Output();
