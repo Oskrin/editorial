@@ -12,6 +12,7 @@ while ($row = pg_fetch_row($consulta)) {
 }
 $cont1++;
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -46,7 +47,7 @@ $cont1++;
             FACTURA COMPRA
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Procesos</a></li>
+            <li><a href=""><i class="fa fa-dashboard"></i> Procesos</a></li>
             <li class="active">Factura Compra</li>
           </ol>
         </section>
@@ -407,7 +408,7 @@ $cont1++;
           </div>
         </section>
       </div>
-      <?php footer(); ?>
+    <?php footer(); ?>
     </div>
 
     <script src="../../plugins/jQuery/jQuery-2.1.3.min.js"></script>

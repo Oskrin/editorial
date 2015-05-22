@@ -18,7 +18,7 @@ function banner_1() {
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <a href="" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
           </a>
 
@@ -26,13 +26,13 @@ function banner_1() {
             <ul class="nav navbar-nav">
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">
                   <span class="hidden-xs">' . $_SESSION['nombres'] . '</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                    <img src="../../dist/img/defaul.png" class="img-circle" alt="User Image" />
                     <p>
                       ' . $_SESSION['nombres'] . '
                     </p>
@@ -86,19 +86,19 @@ print'
                     <li>
                       <a href=""><i class="fa fa-circle-o"></i>Inventario<i class="fa fa-angle-left pull-right"></i></a>
                       <ul class="treeview-menu">
-                        <li><a href="../bodegas"><i class="fa fa-circle-o"></i>Bodegas</a></li>
-                        <li><a href="../categorias"><i class="fa fa-circle-o"></i>Categorias</a></li>
-                        <li><a href="../marcas"><i class="fa fa-circle-o"></i>Marcas</a></li>
-                        <li><a href="../medida"><i class="fa fa-circle-o"></i>Unidades Productos</a></li>
+                        <li><a href="../bodegas" target="_blank"><i class="fa fa-circle-o"></i>Bodegas</a></li>
+                        <li><a href="../categorias" target="_blank"><i class="fa fa-circle-o"></i>Categorias</a></li>
+                        <li><a href="../marcas" target="_blank"><i class="fa fa-circle-o"></i>Marcas</a></li>
+                        <li><a href="../medida" target="_blank"><i class="fa fa-circle-o"></i>Unidades Productos</a></li>
                       </ul>
                     </li>
-                    <li>
+                    <!--<li>
                       <a href=""><i class="fa fa-circle-o"></i>Importar<i class="fa fa-angle-left pull-right"></i></a>
                       <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i>Cargar Productos</a></li>
-                        <!--<li><a href="#"><i class="fa fa-circle-o"></i>Cargar Plan Cuentas</a></li>-->
+                        <li><a href=""><i class="fa fa-circle-o"></i>Cargar Productos</a></li>
+                        <li><a href=""><i class="fa fa-circle-o"></i>Cargar Plan Cuentas</a></li>
                       </ul>
-                    </li>
+                    </li>-->
                   </ul>
                 </li>
                 <!--<li><a href="#"><i class="fa fa-circle-o"></i>Respaldo</a></li>-->
@@ -110,10 +110,10 @@ print'
                 <i class="fa fa-laptop"></i> <span>Ingresos</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../usuarios"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                <li><a href="../proveedores"><i class="fa fa-circle-o"></i> Proveedores</a></li>
-                <li><a href="../clientes"><i class="fa fa-circle-o"></i> Clientes</a></li>
-                <li><a href="../productos"><i class="fa fa-circle-o"></i> Productos</a></li>
+                <li><a href="../usuarios" target="_blank"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                <li><a href="../proveedores" target="_blank"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+                <li><a href="../clientes" target="_blank"><i class="fa fa-circle-o"></i> Clientes</a></li>
+                <li><a href="../productos" target="_blank"><i class="fa fa-circle-o"></i> Productos</a></li>
               </ul>
             </li>
 
@@ -122,34 +122,34 @@ print'
                 <i class="fa fa-files-o"></i> <span>Procesos</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../inventario"><i class="fa fa-circle-o"></i>Inventario</a></li>
-                <li><a href="../proformas"><i class="fa fa-circle-o"></i> Proforma</a></li>
+                <li><a href="../inventario" target="_blank"><i class="fa fa-circle-o"></i>Inventario</a></li>
+                <li><a href="../proformas" target="_blank"><i class="fa fa-circle-o"></i> Proforma</a></li>
                 <li>
                   <a href=""><i class="fa fa-circle-o"></i>Compras<i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                    <li><a href="../factura_compra"><i class="fa fa-circle-o"></i>Productos Bodega</a></li>
-                    <li><a href="../devolucion_compra"><i class="fa fa-circle-o"></i>Devolución Compra</a></li>
+                    <li><a href="../factura_compra" target="_blank"><i class="fa fa-circle-o"></i>Productos Bodega</a></li>
+                    <li><a href="../devolucion_compra" target="_blank"><i class="fa fa-circle-o"></i>Devolución Compra</a></li>
                   </ul>
                 </li>
 
                 <li>
                   <a href=""><i class="fa fa-circle-o"></i>Ventas<i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                    <li><a href="../factura_venta"><i class="fa fa-circle-o"></i>Ventas facturación</a></li>
-                    <li><a href="../notas_credito"><i class="fa fa-circle-o"></i>Notas de crédito</a></li>
+                    <li><a href="../factura_venta" target="_blank"><i class="fa fa-circle-o"></i>Ventas facturación</a></li>
+                    <li><a href="../notas_credito" target="_blank"><i class="fa fa-circle-o"></i>Notas de crédito</a></li>
                   </ul>
                 </li>
 
                 <li>
                   <a href=""><i class="fa fa-circle-o"></i>Cartera<i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                    <li><a href="../cuentas_cobrar"><i class="fa fa-circle-o"></i>Cuentas por cobrar</a></li>
-                    <li><a href="../cuentas_pagar"><i class="fa fa-circle-o"></i>Cuentas por pagar</a></li>
+                    <li><a href="../cuentas_cobrar" target="_blank"><i class="fa fa-circle-o"></i>Cuentas por cobrar</a></li>
+                    <li><a href="../cuentas_pagar" target="_blank"><i class="fa fa-circle-o"></i>Cuentas por pagar</a></li>
                     <li>
                       <a href=""><i class="fa fa-circle-o"></i>Externas<i class="fa fa-angle-left pull-right"></i></a>
                       <ul class="treeview-menu">
-                        <li><a href="../cxc_externa"><i class="fa fa-circle-o"></i>Cuentas por cobrar</a></li>
-                        <li><a href="../cxp_externa"><i class="fa fa-circle-o"></i>Cuentas por pagar</a></li>
+                        <li><a href="../cxc_externa" target="_blank"><i class="fa fa-circle-o"></i>Cuentas por cobrar</a></li>
+                        <li><a href="../cxp_externa" target="_blank"><i class="fa fa-circle-o"></i>Cuentas por pagar</a></li>
                       </ul>
                     </li>
                   </ul>
@@ -163,8 +163,8 @@ print'
                   </ul>
                 </li>-->
 
-                <li><a href="../registro_gastos"><i class="fa fa-circle-o"></i>Registro Gastos</a></li>
-                <li><a href="../gastos"><i class="fa fa-circle-o"></i>Gastos Internos</a></li>
+                <li><a href="../registro_gastos" target="_blank"><i class="fa fa-circle-o"></i>Registro Gastos</a></li>
+                <li><a href="../gastos" target="_blank"><i class="fa fa-circle-o"></i>Gastos Internos</a></li>
               </ul>
             </li>
             <li>
