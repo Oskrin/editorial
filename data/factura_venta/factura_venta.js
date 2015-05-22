@@ -404,18 +404,30 @@ function entrar3() {
                                 for (var t = 0; t < fil.length; t++) {
                                     var dd = fil[t];
                                     if (dd['iva'] === "Si") {
+                                        if(dd['incluye'] == "Si"){
                                         subtotal = (parseFloat(subtotal) + parseFloat(dd['total'])).toFixed(2);
                                         sub = (parseFloat((subtotal / 1.12))).toFixed(3);
                                         iva = (sub * 0.12).toFixed(3);
                                         descu_total = (parseFloat(descu_total) + parseFloat(dd['cal_des'])).toFixed(2);
                                         t_fc = ((parseFloat(sub) + (parseFloat(iva)) + parseFloat($("#total_p").val()))).toFixed(2);
                                         $("#iva_producto").val("");
+                                    }else{
+                                       if(dd['incluye'] == "No"){
+                                          subtotal = (parseFloat(subtotal) + parseFloat(dd['total'])).toFixed(2);
+                                          sub = parseFloat(subtotal).toFixed(3);
+                                          iva = ((subtotal * 12) / 100).toFixed(3);
+                                          descu_total = (parseFloat(descu_total) + parseFloat(dd['cal_des'])).toFixed(2);
+                                          t_fc = ((parseFloat(sub) + (parseFloat(iva)) + parseFloat($("#total_p").val()))).toFixed(2);
+                                          $("#iva_producto").val("");
+                                       } 
                                     }
+                                  }  
                                 }
                                 $("#total_p2").val(sub);
                                 $("#iva").val(iva);
                                 $("#desc").val(descu_total);
                                 $("#tot").val(t_fc);
+
                             } else {
                                 if ($("#iva_producto").val() === "No") {
                                     fil = jQuery("#list").jqGrid("getRowData");
@@ -1532,8 +1544,7 @@ function flecha_atras(){
                 $.getJSON('retornar_factura_venta2.php?com=' + valor, function(data) {
                     var tama = data.length;
                     if (tama !== 0) {
-                        for (var i = 0; i < tama; i = i + 9)
-                        {
+                        for (var i = 0; i < tama; i = i + 9) {
                             var datarow = {
                                 cod_producto: data[i], 
                                 codigo: data[i + 1], 
