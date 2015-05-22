@@ -299,6 +299,7 @@ $cont1++;
                                 <input type="hidden" name="carga_series"  id="carga_series" readonly class="form-control" />
                                 <input type="hidden" name="cod_producto"  id="cod_producto" readonly class="form-control" />
                                 <input type="hidden" name="des"  id="des" readonly class="form-control" />
+                                <input type="hidden" name="incluye"  id="incluye" readonly class="form-control" />
                                 <input type="hidden" name="inventar"  id="inventar" readonly class="form-control" />
                               </div>  
                             </div> 

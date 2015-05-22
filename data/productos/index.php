@@ -56,7 +56,7 @@ include('../menu/app.php');
                       <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">                        
                             <div class="col-mx-12"> 
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                 <div class="form-group">
                                   <label>Código Producto: <font color="red">*</font></label>
                                   <input type="text" name="cod_prod"  id="cod_prod" placeholder="El código debe ser único" class="form-control" />
@@ -107,40 +107,12 @@ include('../menu/app.php');
                                 </div>
 
                                 <div class="form-group">
-                                  <label>Stock Mínimo:<font color="red">*</font></label>
-                                  <input type="number" name="minimo" id="minimo" value="1" class="form-control" min="0" />
-                                </div>
-
-                                <div class="form-group">
-                                  <label>Fecha Creación:<font color="red">*</font></label>
-                                  <input type="text" name="fecha_creacion" id="fecha_creacion" class="form-control" readonly />
-                                </div>
-
-                                <div class="form-group">
-                                  <label>Iva:</label>
-                                  <select class="form-control" name="iva" id="iva">
-                                    <option value="">......Seleccione......</option>
-                                    <option value="Si" selected>Si</option> 
-                                    <option value="No">No</option>     
-                                  </select>
-                                </div>
-
-                                <div class="form-group">
-                                  <label>Series:</label>
-                                  <select class="form-control" name="series" id="series">
-                                    <option value="">......Seleccione......</option>
-                                    <option value="Si">Si</option> 
-                                    <option value="No" selected>No</option>     
-                                  </select>
-                                </div>
-
-                                <div class="form-group">
                                   <label>Observaciones:</label>
                                   <textarea class="form-control" name="aplicacion" id="aplicacion" rows="3"></textarea>
                                 </div>
                               </div>
 
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                 <div class="form-group">
                                   <label>Código Barras:</label>
                                   <input type="text" name="cod_barras" id="cod_barras" required placeholder="El código debe ser único" class="form-control" />
@@ -195,13 +167,49 @@ include('../menu/app.php');
                                 </div>
 
                                 <div class="form-group">
+                                  <label>Caracteristicas:</label>
+                                  <input type="text" name="modelo" id="modelo" placeholder="Ingrese las caracteristicas" class="form-control"/>
+                                </div>
+                              </div>
+
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label>Stock Mínimo:<font color="red">*</font></label>
+                                  <input type="number" name="minimo" id="minimo" value="1" class="form-control" min="0" />
+                                </div>
+
+                                <div class="form-group">
                                   <label>Stock Máximo: <font color="red">*</font></label>
                                   <input type="number" name="maximo" id="maximo"  value="1" min="0" class="form-control"/>
                                 </div>
 
                                 <div class="form-group">
-                                  <label>Caracteristicas:</label>
-                                  <input type="text" name="modelo" id="modelo" placeholder="Ingrese las caracteristicas" class="form-control"/>
+                                  <label>Fecha Creación:<font color="red">*</font></label>
+                                  <input type="text" name="fecha_creacion" id="fecha_creacion" class="form-control" readonly />
+                                </div>
+
+                                <div class="form-group">
+                                  <label>Iva:</label>
+                                  <select class="form-control" name="iva" id="iva">
+                                    <option value="Si" selected>Si</option> 
+                                    <option value="No">No</option>     
+                                  </select>
+                                </div>
+
+                                <div class="form-group" style="display: none">
+                                  <label>Series:</label>
+                                  <select class="form-control" name="series" id="series">
+                                    <option value="Si">Si</option> 
+                                    <option value="No" selected>No</option>     
+                                  </select>
+                                </div>
+
+                                <div class="form-group">
+                                  <label>Incluye Iva:</label>
+                                  <select class="form-control" name="incluye" id="incluye">
+                                    <option value="Si">Si</option> 
+                                    <option value="No" selected>No</option>     
+                                  </select>
                                 </div>
 
                                 <div class="form-group">

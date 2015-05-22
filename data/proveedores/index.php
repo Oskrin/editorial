@@ -49,7 +49,7 @@ include('../menu/app.php');
                   <div class="row">
                       <form id="proveedores_form" name="proveedores_form" method="post">
                         <div class="col-mx-12">                    
-                          <div class="col-md-6">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <label>Tipo Documento: <font color="red">*</font></label>
                               <select class="form-control" name="tipo_docu" id="tipo_docu">
@@ -94,30 +94,9 @@ include('../menu/app.php');
                               <label>País: <font color="red">*</font></label>
                               <input type="text" name="pais_pro" id="pais_pro" placeholder="Ingrese un país" class="form-control" />
                             </div>
-
-                            <div class="form-group">
-                              <label>Forma de Pago:</label>
-                              <select class="form-control" name="forma_pago" id="forma_pago">
-                                <option value="Contado" selected>Contado</option>
-                                <option value="Credito">Credito</option>     
-                              </select>
-                            </div>
-
-                            <div class="form-group">
-                              <label>Proveedor Principal: <font color="red">*</font></label>
-                              <select class="form-control" name="principal_pro" id="principal_pro">
-                                <option value="Si" selected>Si</option>
-                                <option value="No">No</option>     
-                              </select>
-                            </div>
-
-                            <div class="form-group">
-                              <label>Comentarios:</label>
-                              <textarea class="form-control" name="observaciones_pro" id="observaciones_pro" rows="3"></textarea>
-                            </div>
                           </div>
 
-                          <div class="col-md-6">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <label>RUC/CI: <font color="red">*</font></label>
                               <input type="text" name="ruc_ci"  id="ruc_ci" class="form-control" />
@@ -152,6 +131,24 @@ include('../menu/app.php');
                               <label>Ciudad: <font color="red">*</font></label>
                               <input type="text" name="ciudad_pro" id="ciudad_pro" class="form-control"/>
                             </div>
+                          </div>
+
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label>Forma de Pago:</label>
+                              <select class="form-control" name="forma_pago" id="forma_pago">
+                                <option value="Contado" selected>Contado</option>
+                                <option value="Credito">Credito</option>     
+                              </select>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Proveedor Principal: <font color="red">*</font></label>
+                              <select class="form-control" name="principal_pro" id="principal_pro">
+                                <option value="Si" selected>Si</option>
+                                <option value="No">No</option>     
+                              </select>
+                            </div>
 
                             <div class="form-group">
                               <label>Cupo de Crédito:</label>
@@ -169,6 +166,11 @@ include('../menu/app.php');
                                 <option value="Persona Natural" selected>Persona Natural</option>
                                 <option value="Persona Jurídica">Persona Jurídica</option>     
                               </select>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Comentarios:</label>
+                              <textarea class="form-control" name="observaciones_pro" id="observaciones_pro" rows="3"></textarea>
                             </div>
                           </div>
                         </div>

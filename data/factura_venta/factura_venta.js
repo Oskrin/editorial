@@ -223,7 +223,7 @@ function entrar3() {
                         if($("#inventar").val() == "Si"){
                         if (parseInt($("#cantidad").val()) > parseInt($("#disponibles").val())) {
                             $("#cantidad").focus();
-                            alertify.error("Error.. Fuera de Stock cantidad disponible: " +$("#disponibles").val() );
+                            alertify.error("Error.. Fuera de Stock cantidad disponible: " +$("#disponibles").val());
                         }else{
                             var filas = jQuery("#list").jqGrid("getRowData");
                             var descuento = 0;
@@ -261,8 +261,10 @@ function entrar3() {
                                     cal_des: resultado,
                                     total: total, 
                                     iva: $("#iva_producto").val(), 
-                                    pendiente: 0
+                                    pendiente: 0,
+                                    incluye: $("#incluye").val()
                                 };
+
                                 su = jQuery("#list").jqGrid('addRowData', $("#cod_producto").val(), datarow);
                                 $("#cod_producto").val("");
                                 $("#codigo_barras").val("");
@@ -272,6 +274,7 @@ function entrar3() {
                                 $("#p_venta").val("");
                                 $("#descuento").val("");
                                 $("#disponibles").val("");
+                                $("#incluye").val("");
                                 $('#combobox').children().remove().end();
                             }
                             else {
@@ -326,7 +329,8 @@ function entrar3() {
                                             cal_des: resultado,
                                             total: total, 
                                             iva: $("#iva_producto").val(), 
-                                            pendiente: 0
+                                            pendiente: 0,
+                                            incluye: $("#incluye").val()
                                         };
                                     
                                         su = jQuery("#list").jqGrid('setRowData', $("#cod_producto").val(), datarow);
@@ -338,11 +342,12 @@ function entrar3() {
                                         $("#p_venta").val("");
                                         $("#descuento").val("");
                                         $("#disponibles").val("");
+                                        $("#incluye").val("");
                                         $('#combobox').children().remove().end();
                                     // }
                                 }
                                 else {
-                                    if(filas.length < 25){
+                                    if(filas.length < 19){
                                         if ($("#descuento").val() !== "") {
                                             desc = $("#descuento").val();
                                             precio = (parseFloat($("#p_venta").val())).toFixed(2);
@@ -367,7 +372,8 @@ function entrar3() {
                                             cal_des: resultado,
                                             total: total, 
                                             iva: $("#iva_producto").val(), 
-                                            pendiente: 0
+                                            pendiente: 0,
+                                            incluye: $("#incluye").val()
                                         };
                                         su = jQuery("#list").jqGrid('addRowData', $("#cod_producto").val(), datarow);
                                         $("#cod_producto").val("");
@@ -378,6 +384,7 @@ function entrar3() {
                                         $("#p_venta").val("");
                                         $("#descuento").val("");
                                         $("#disponibles").val("");
+                                        $("#incluye").val("");
                                         $('#combobox').children().remove().end();
                                     }else{
                                         alertify.error("Error... Alcanzo el limite máximo de Items");
@@ -385,6 +392,8 @@ function entrar3() {
                                 }
                             }
 
+                            /////////////////////proceso incluye iva//////////
+                            // if($("#incluye").val() === "Si"){
                             var subtotal = 0;
                             var iva = 0;
                             var t_fc = 0;
@@ -426,7 +435,9 @@ function entrar3() {
                                 }
                             }
                             $("#codigo_barras").focus();
-                        }
+
+                        /////////////////////////////////////////////////////
+                     }
                      }else{
                         if($("#inventar").val() == "No"){
                         
@@ -1852,10 +1863,6 @@ function inicio() {
 
     show();
 
-    // $("#ruc_ci").validarCedulaEC({
-    //     strict: false
-    // });
-
     if ($("#num_oculto").val() === "") {
         $("#num_factura").val("");
     } else {
@@ -1994,7 +2001,7 @@ function inicio() {
             $.getJSON('search.php?codigo_barras=' + codigo + '&precio=' + precio, function(data) {
                 var tama = data.length;
                 if (tama !== 0) {
-                    for (var i = 0; i < tama; i = i + 9) {
+                    for (var i = 0; i < tama; i = i + 10) {
                         $("#codigo").val(data[i]);
                         $("#producto").val(data[i + 1]);
                         $("#p_venta").val(data[i + 2]);
@@ -2005,6 +2012,7 @@ function inicio() {
                         $("#cod_producto").val(data[i + 6]);
                         $("#des").val(data[i + 7]);
                         $("#inventar").val(data[i + 8]);
+                        $("#incluye").val(data[i + 9]);
                         $("#cantidad").focus();
                     }
                 }else{
@@ -2018,6 +2026,7 @@ function inicio() {
                     $("#cod_producto").val("");
                     $("#des").val("");
                     $("#inventar").val("");
+                    $("#incluye").val("");
                 }
             });
         }else{
@@ -2025,7 +2034,7 @@ function inicio() {
                 $.getJSON('search.php?codigo_barras=' + codigo + '&precio=' + precio, function(data) {
                     var tama = data.length;
                     if (tama !== 0) {
-                        for (var i = 0; i < tama; i = i + 9) {
+                        for (var i = 0; i < tama; i = i + 10) {
                             $("#codigo").val(data[i]);
                             $("#producto").val(data[i + 1]);
                             $("#p_venta").val(data[i + 2]);
@@ -2036,6 +2045,7 @@ function inicio() {
                             $("#cod_producto").val(data[i + 6]);
                             $("#des").val(data[i + 7]);
                             $("#inventar").val(data[i + 8]);
+                            $("#incluye").val(data[i + 9]);
                             $("#cantidad").focus();
                         }
                     }else{
@@ -2049,6 +2059,7 @@ function inicio() {
                         $("#cod_producto").val("");
                         $("#des").val("");
                         $("#inventar").val("");
+                        $("#incluye").val("");
                     }
                 });
             }
@@ -2456,7 +2467,7 @@ function inicio() {
     var can;
     jQuery("#list").jqGrid({
         datatype: "local",
-        colNames: ['', 'ID', 'Código', 'Producto', 'Cantidad', 'PVP', 'Descuento','Calculado', 'Total', 'Iva', 'Pendientes'],
+        colNames: ['', 'ID', 'Código', 'Producto', 'Cantidad', 'PVP', 'Descuento','Calculado', 'Total', 'Iva', 'Pendientes','Incluye'],
         colModel: [
             {name: 'myac', width: 50, fixed: true, sortable: false, resize: false, formatter: 'actions',
                 formatoptions: {keys: false, delbutton: true, editbutton: false}
@@ -2472,7 +2483,8 @@ function inicio() {
             {name: 'cal_des', index: 'cal_des', editable: false, hidden: true, frozen: true, editrules: {required: true}, align: 'center', width: 90},
             {name: 'total', index: 'total', editable: false, search: false, frozen: true, editrules: {required: true}, align: 'center', width: 150},
             {name: 'iva', index: 'iva', align: 'center', width: 100, hidden: true},
-            {name: 'pendiente', index: 'pendiente', editable: false, frozen: true, editrules: {required: true}, align: 'center', width: 90}
+            {name: 'pendiente', index: 'pendiente', editable: false, frozen: true, editrules: {required: true}, align: 'center', width: 90},
+            {name: 'incluye', index: 'incluye', editable: false, frozen: true, editrules: {required: true}, align: 'center', width: 90}
         ],
         rowNum: 30,
         width: 885,
@@ -2783,8 +2795,7 @@ function inicio() {
             $.getJSON('retornar_factura_venta_credito.php?com=' + valor, function(data) {
                 var tama = data.length;
                 if (tama !== 0) {
-                    for (var i = 0; i < tama; i = i + 4)
-                {
+                    for (var i = 0; i < tama; i = i + 4) {
                     $("#formas").val(data[i]);
                     $("#adelanto").val(data[i + 1 ]);
                     $("#meses").val(data[i + 2 ]);
@@ -2813,8 +2824,7 @@ function inicio() {
             $.getJSON('retornar_factura_venta2.php?com=' + valor, function(data) {
                 var tama = data.length;
                 if (tama !== 0) {
-                    for (var i = 0; i < tama; i = i + 9)
-                    {
+                    for (var i = 0; i < tama; i = i + 9) {
                         var datarow = {
                             cod_producto: data[i], 
                             codigo: data[i + 1], 

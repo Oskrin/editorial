@@ -341,7 +341,8 @@ function comprobar2() {
                                     $("#carga_series").val("");
                                 ///////////////////////////
                                 }
-                            }                            
+                            }   
+                                                     
                             var subtotal = 0;
                             var iva = 0;
                             var t_fc = 0;
