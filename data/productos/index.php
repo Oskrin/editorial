@@ -69,7 +69,7 @@ include('../menu/app.php');
                                 </div>
 
                                 <div class="form-group">
-                                  <label>PSP Minorista: <font color="red">*</font></label>
+                                  <label>PVP Minorista: <font color="red">*</font></label>
                                   <div class="input-group">
                                     <div class="input-group-addon">
                                       <i class="fa fa-usd"></i>
@@ -129,7 +129,7 @@ include('../menu/app.php');
                                 </div>
 
                                 <div class="form-group">
-                                  <label>PSP Mayorista: <font color="red">*</font></label>
+                                  <label>PVP Mayorista: <font color="red">*</font></label>
                                   <div class="input-group">
                                     <div class="input-group-addon">
                                       <i class="fa fa-usd"></i>
