@@ -269,9 +269,9 @@ print'
             </li>
 
             <!--<li class="header">Otros.</li>
-            <li><a href="#"><i class="fa fa-circle-o text-danger"></i> Important</a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-warning"></i> Warning</a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-info"></i> Information</a></li>-->
+            <li><a href=""><i class="fa fa-circle-o text-danger"></i> Important</a></li>
+            <li><a href=""><i class="fa fa-circle-o text-warning"></i> Warning</a></li>
+            <li><a href=""><i class="fa fa-circle-o text-info"></i> Information</a></li>-->
           </ul>
         </section>
         <!-- /.sidebar -->
