@@ -393,61 +393,93 @@ function entrar3() {
                             }
 
                             /////////////////////proceso incluye iva//////////
-                            // if($("#incluye").val() === "Si"){
                             var subtotal = 0;
-                            var iva = 0;
-                            var t_fc = 0;
                             var sub = 0;
-                            var descu_total = 0;                        
+                            var sub1 = 0;
+                            var sub2 = 0;
+                            var sub_total = 0;
+                            var iva = 0;
+                            var iva1 = 0;
+                            var iva2 = 0;
+                            var iva_total = 0;
+                            var descu_total = 0;
+                            var descu_total1 = 0;
+                            var descu_total2 = 0;
+                            var descu_total3 = 0;
+                            var t_fc = 0;
+                            var t_fc1 = 0;
+                            var t_fc2 = 0;
+                            var t_fc_total = 0;
+                                                    
                             if ($("#iva_producto").val() === "Si") {
                                 var fil = jQuery("#list").jqGrid("getRowData");
                                 for (var t = 0; t < fil.length; t++) {
                                     var dd = fil[t];
                                     if (dd['iva'] === "Si") {
+                                        if(dd['incluye'] == "No"){
+                                          subtotal = (parseFloat(dd['total'])).toFixed(2);
+                                          sub1 = parseFloat(subtotal).toFixed(3);
+                                          iva1 = ((sub1 * 12) / 100).toFixed(3);
+                                          descu_total1 = parseFloat(dd['cal_des']).toFixed(2);
+                                          t_fc1 = ((parseFloat(sub1) + (parseFloat(iva1)) + parseFloat($("#total_p").val()))).toFixed(2);
+                                          
+                                          ////////////////////////valores////////////////////
+                                          sub_total =  (parseFloat(sub_total) + parseFloat(sub1)).toFixed(3);
+                                          iva_total =  (parseFloat(iva_total) + parseFloat(iva1)).toFixed(3);
+                                          descu_total3 =  (parseFloat(descu_total3) + parseFloat(descu_total1)).toFixed(2);
+                                          t_fc_total =  (parseFloat(t_fc_total) + parseFloat(t_fc1)).toFixed(2);
+                                          $("#iva_producto").val("");
+                                          /////////////////////////////////////////////////
+                                       }else{
                                         if(dd['incluye'] == "Si"){
-                                        subtotal = (parseFloat(subtotal) + parseFloat(dd['total'])).toFixed(2);
-                                        sub = (parseFloat((subtotal / 1.12))).toFixed(3);
-                                        iva = (sub * 0.12).toFixed(3);
-                                        descu_total = (parseFloat(descu_total) + parseFloat(dd['cal_des'])).toFixed(2);
-                                        t_fc = ((parseFloat(sub) + (parseFloat(iva)) + parseFloat($("#total_p").val()))).toFixed(2);
-                                        $("#iva_producto").val("");
+                                        subtotal = (parseFloat(dd['total'])).toFixed(2);
+                                        sub2 = (parseFloat((subtotal / 1.12))).toFixed(3);
+                                        iva2 = (sub2 * 0.12).toFixed(3);
+                                        descu_total2 = parseFloat(dd['cal_des']).toFixed(2);
+                                        t_fc2 = ((parseFloat(sub2) + (parseFloat(iva2)) + parseFloat($("#total_p").val()))).toFixed(2);
+                                        ////////////////////////valores////////////////////
+                                          sub_total =  (parseFloat(sub_total) + parseFloat(sub2)).toFixed(3);
+                                          iva_total =  (parseFloat(iva_total) + parseFloat(iva2)).toFixed(3);
+                                          descu_total3 =  (parseFloat(descu_total3) + parseFloat(descu_total2)).toFixed(2);
+                                          t_fc_total =  (parseFloat(t_fc_total) + parseFloat(t_fc2)).toFixed(2);
+                                          $("#iva_producto").val("");
+                                          /////////////////////////////////////////////////
+                                        }
                                     }
-
-                                    if(dd['incluye'] == "No"){
-                                      subtotal = (parseFloat(subtotal) + parseFloat(dd['total'])).toFixed(2);
-                                      sub = parseFloat(subtotal).toFixed(3);
-                                      iva = ((subtotal * 12) / 100).toFixed(3);
-                                      descu_total = (parseFloat(descu_total) + parseFloat(dd['cal_des'])).toFixed(2);
-                                      t_fc = ((parseFloat(sub) + (parseFloat(iva)) + parseFloat($("#total_p").val()))).toFixed(2);
-                                      $("#iva_producto").val("");
-                                   }
-                                  }  
+                                  }
                                 }
 
-                                $("#total_p2").val(sub);
-                                $("#iva").val(iva);
-                                $("#desc").val(descu_total);
-                                $("#tot").val(t_fc);
+                                $("#total_p2").val(sub_total);
+                                $("#iva").val(iva_total);
+                                $("#desc").val(descu_total3);
+                                $("#tot").val(t_fc_total);
                             } else {
                                 if ($("#iva_producto").val() === "No") {
                                     fil = jQuery("#list").jqGrid("getRowData");
                                     for (t = 0; t < fil.length; t++) {
                                         dd = fil[t];
                                         if (dd['iva'] === "No") {
-                                            subtotal = (parseFloat(subtotal) + parseFloat(dd['total']));
+                                            subtotal = (parseFloat(dd['total']));
                                             sub = parseFloat(subtotal).toFixed(2);
-                                            descu_total = (parseFloat($("#desc").val()) + parseFloat(dd['cal_des'])).toFixed(2);
-                                            t_fc = ((parseFloat(sub)) + parseFloat($("#total_p2").val()) + parseFloat($("#iva").val())).toFixed(2);
+                                            iva = parseFloat($("#iva").val());
+                                            descu_total = (parseFloat(dd['cal_des'])).toFixed(2);
+                                            alert(descu_total);
+                                            t_fc = ((parseFloat(sub) + (parseFloat(iva)) + parseFloat($("#total_p2").val()))).toFixed(2);
+                                            /////////////////valores//////////////////
+                                            sub_total =  (parseFloat(sub_total) + parseFloat(sub)).toFixed(3);
+                                            descu_total3 =  (parseFloat(descu_total3) + parseFloat(descu_total)).toFixed(2);
+                                            t_fc_total =  (parseFloat(t_fc_total) + parseFloat(t_fc)).toFixed(2);
                                             $("#iva_producto").val("");
+                                            ////////////////////////////////////////
                                         }
                                     }
-                                    $("#total_p").val(sub);
-                                    $("#desc").val(descu_total);
-                                    $("#tot").val(t_fc);
+
+                                    $("#total_p").val(sub_total);
+                                    $("#desc").val(descu_total3);
+                                    $("#tot").val(t_fc_total);
                                 }
                             }
                             $("#codigo_barras").focus();
-
                         /////////////////////////////////////////////////////
                      }
                      }else{
@@ -2495,7 +2527,7 @@ function inicio() {
             {name: 'total', index: 'total', editable: false, search: false, frozen: true, editrules: {required: true}, align: 'center', width: 150},
             {name: 'iva', index: 'iva', align: 'center', width: 100, hidden: true},
             {name: 'pendiente', index: 'pendiente', editable: false, frozen: true, editrules: {required: true}, align: 'center', width: 90},
-            {name: 'incluye', index: 'incluye', editable: false, frozen: true, editrules: {required: true}, align: 'center', width: 90}
+            {name: 'incluye', index: 'incluye', editable: false, hidden: true, frozen: true, editrules: {required: true}, align: 'center', width: 90}
         ],
         rowNum: 30,
         width: 885,
@@ -2519,34 +2551,81 @@ function inicio() {
                 var subtotal = 0;
                 var subtotal2 = 0;
                 var sub = 0;
+                var sub1 = 0;
+                var sub2 = 0;
+                var sub_total = 0;
                 var iva = 0;
-                var t_fc = 0;
-                var t_fc2 = 0;
+                var iva1 = 0;
+                var iva2 = 0;
+                var iva_total = 0;
                 var descu_total = 0;
+                var descu_total1 = 0;
+                var descu_total2 = 0;
+                var descu_total3 = 0;
+                var t_fc = 0;
+                var t_fc1 = 0;
+                var t_fc2 = 0;
+                var t_fc_total = 0;
+
                 var fil = jQuery("#list").jqGrid("getRowData"); 
                 if (ret.iva === "Si") {
                    for (var t = 0; t < fil.length; t++) {
-                       subtotal = (parseFloat($("#tot").val()) - parseFloat(ret.total)).toFixed(2);
-                       sub = parseFloat((subtotal / 1.12)).toFixed(3);
-                       iva = (sub * 0.12).toFixed(3);
-                       descu_total = (parseFloat($("#desc").val()) - ret.cal_des).toFixed(2);
-                       t_fc = ((parseFloat(sub) + parseFloat(iva)) + parseFloat($("#total_p").val())).toFixed(2);
+                       if(ret.incluye == "No"){
+                          subtotal = (parseFloat(ret.total)).toFixed(2);
+                          sub1 = parseFloat(subtotal).toFixed(3);
+                          iva1 = ((sub1 * 12) / 100).toFixed(3);
+                          descu_total1 = parseFloat(ret.cal_des).toFixed(2);
+                          t_fc1 = ((parseFloat(sub1) + (parseFloat(iva1)))).toFixed(2);
+                          
+                          ////////////////////////valores////////////////////
+                          sub_total =  (parseFloat($("#total_p2").val()) - parseFloat(sub1)).toFixed(3);
+                          iva_total =  (parseFloat($("#iva").val()) - parseFloat(iva1)).toFixed(3);
+                          descu_total3 =  (parseFloat($("#desc").val()) - parseFloat(descu_total1)).toFixed(2);
+                          t_fc_total =  (parseFloat($("#tot").val()) - parseFloat(t_fc1)).toFixed(2);
+                          /////////////////////////////////////////////////
+                       }else{
+                       if (ret.incluye === "Si") {
+                        subtotal = (parseFloat(ret.total)).toFixed(2);
+                        sub2 = (parseFloat((subtotal / 1.12))).toFixed(3);
+                        iva2 = (sub2 * 0.12).toFixed(3);
+                        descu_total2 = parseFloat(ret.cal_des).toFixed(2);
+                        t_fc2 = ((parseFloat(sub2) + (parseFloat(iva2)))).toFixed(2);
+                        ////////////////////////valores////////////////////
+                        sub_total =  (parseFloat($("#total_p2").val()) - parseFloat(sub2)).toFixed(3);
+                        iva_total =  (parseFloat($("#iva").val()) - parseFloat(iva2)).toFixed(3);
+                        descu_total3 =  (parseFloat($("#desc").val()) - parseFloat(descu_total2)).toFixed(2);
+                        t_fc_total =  (parseFloat($("#tot").val()) - parseFloat(t_fc2)).toFixed(2);
+                      /////////////////////////////////////////////////
+                      }
+                     }
                    }
-                     $("#total_p2").val(sub);
-                     $("#iva").val(iva);
-                     $("#desc").val(descu_total);
-                     $("#tot").val(t_fc);
+                     $("#total_p2").val(sub_total);
+                     $("#iva").val(iva_total);
+                     $("#desc").val(descu_total3);
+                     $("#tot").val(t_fc_total);
                 }else{
                     if (ret.iva === "No") {
                         for (t = 0; t < fil.length; t++) {
-                        subtotal2 = (parseFloat($("#total_p").val()) - parseFloat(ret.total)).toFixed(2);
-                        descu_total = (parseFloat($("#desc").val()) - ret.cal_des).toFixed(2);
-                        t_fc2 = ((parseFloat($("#tot").val()) - parseFloat(ret.total))).toFixed(2);
+                            subtotal = (ret.total);
+                            sub = parseFloat(subtotal).toFixed(2);
+                            iva = parseFloat($("#iva").val());
+                            descu_total = (parseFloat(ret.cal_des)).toFixed(2);
+                            t_fc = ((parseFloat(sub))).toFixed(2);
+
+                            /////////////////valores//////////////////
+                            sub_total =  (parseFloat($("#total_p").val()) - parseFloat(sub)).toFixed(3);
+                            descu_total3 =  (parseFloat($("#desc").val()) - parseFloat(descu_total)).toFixed(2);
+                            t_fc_total =  (parseFloat($("#tot").val()) - parseFloat(t_fc)).toFixed(2);
+                            $("#iva_producto").val("");
+                            ////////////////////////////////////////
+                        // subtotal2 = (parseFloat($("#total_p").val()) - parseFloat(ret.total)).toFixed(2);
+                        // descu_total = (parseFloat($("#desc").val()) - ret.cal_des).toFixed(2);
+                        // t_fc = ((parseFloat($("#tot").val()) - parseFloat(ret.total))).toFixed(2);
                         }
                     }
-                    $("#total_p").val(subtotal2);
-                    $("#desc").val(descu_total);
-                    $("#tot").val(t_fc2);
+                    $("#total_p").val(sub_total);
+                    $("#desc").val(descu_total3);
+                    $("#tot").val(t_fc_total);
                 }
                 var su = jQuery("#list").jqGrid('delRowData', rowid);
                    if (su === true) {
