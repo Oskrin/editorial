@@ -688,7 +688,7 @@ function entrar3() {
                             $("#codigo_barras").focus();
                        }
                      }
-                    }
+                   }
                 }
             }
         }
@@ -1463,7 +1463,7 @@ function flecha_atras(){
         data: "comprobante=" + $("#comprobante").val() + "&tabla=" + "factura_venta" + "&id_tabla=" + "id_factura_venta" + "&tipo=" + 1,
         success: function(data) {
             var val = data;
-            if(val != ""){
+            if(val != "") {
                 $("#comprobante").val(val);
                 var valor = $("#comprobante").val();
                 ///////////////////llamar factura flechas primera parte/////
@@ -1599,7 +1599,7 @@ function flecha_atras(){
     });
 } 
 
-function flecha_siguiente(){
+function flecha_siguiente() {
     $.ajax({
         type: "POST",
         url: "../../procesos/flechas.php",
