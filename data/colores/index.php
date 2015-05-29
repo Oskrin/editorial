@@ -20,8 +20,6 @@
         <link href="../../css/sm-core-css.css" rel="stylesheet" type="text/css" />
         <link href="../../css/sm-blue/sm-blue.css" rel="stylesheet" type="text/css" />
 
-        <link href="../../font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />        
-        <link href="../../plugins/icon/ionicons.min.css" rel="stylesheet" type="text/css" />    
         <script type="text/javascript" src="../../js/bootstrap.js"></script>
         <script type="text/javascript" src="../../js/jquery-loader.js"></script>
         <script type="text/javascript" src="../../js/jquery-1.10.2.js"></script>
