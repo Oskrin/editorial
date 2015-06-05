@@ -463,7 +463,7 @@ function entrar3() {
                                             sub = parseFloat(subtotal).toFixed(2);
                                             iva = parseFloat($("#iva").val());
                                             descu_total = (parseFloat(dd['cal_des'])).toFixed(2);
-                                            alert(descu_total);
+                                            // alert(descu_total);
                                             t_fc = ((parseFloat(sub) + (parseFloat(iva)) + parseFloat($("#total_p2").val()))).toFixed(2);
                                             /////////////////valores//////////////////
                                             sub_total =  (parseFloat(sub_total) + parseFloat(sub)).toFixed(3);
@@ -722,7 +722,7 @@ function entrar3() {
                                             sub = parseFloat(subtotal).toFixed(2);
                                             iva = parseFloat($("#iva").val());
                                             descu_total = (parseFloat(dd['cal_des'])).toFixed(2);
-                                            alert(descu_total);
+                                            // alert(descu_total);
                                             t_fc = ((parseFloat(sub) + (parseFloat(iva)) + parseFloat($("#total_p2").val()))).toFixed(2);
                                             /////////////////valores//////////////////
                                             sub_total =  (parseFloat(sub_total) + parseFloat(sub)).toFixed(3);
