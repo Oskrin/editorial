@@ -35,8 +35,8 @@ $cont1++;
     <link href="../../dist/css/alertify.default.css" id="toggleCSS" rel="stylesheet" />
     <link href="../../dist/css/jquery-ui-1.10.4.custom.css" rel="stylesheet" type="text/css"/>            
     <link href="../../dist/css/ui.jqgrid.css" rel="stylesheet" type="text/css"/> 
-    
   </head>
+
   <body class="skin-blue">
     <div class="wrapper">
       <?php banner_1(); ?>
@@ -278,6 +278,7 @@ $cont1++;
                                     <option value="No">No</option> 
                                 </select>
                                 <input type="hidden" name="carga_series"  id="carga_series" readonly class="form-control" />
+                                <input type="hidden" name="incluye"  id="incluye" readonly class="form-control" />
                                 <input type="hidden" name="cod_producto"  id="cod_producto" readonly class="form-control" />
                                 
                               </div>  
@@ -320,7 +321,7 @@ $cont1++;
                                     <div class="input-group-addon">
                                       <i class="glyphicon glyphicon-usd"></i>
                                     </div>
-                                    <input type="text" name="total_p2" id="total_p2" value="0.00" readonly class="form-control"/>
+                                    <input type="text" name="total_p2" id="total_p2" value="0.000" readonly class="form-control"/>
                                   </div>                                
                                 </div> 
                               </div>
@@ -332,7 +333,7 @@ $cont1++;
                                     <div class="input-group-addon">
                                       <i class="glyphicon glyphicon-usd"></i>
                                     </div>
-                                    <input type="text" name="iva" id="iva" value="0.00" readonly class="form-control"/>
+                                    <input type="text" name="iva" id="iva" value="0.000" readonly class="form-control"/>
                                   </div>                                
                                 </div> 
                               </div>
@@ -344,7 +345,7 @@ $cont1++;
                                     <div class="input-group-addon">
                                       <i class="glyphicon glyphicon-usd"></i>
                                     </div>
-                                    <input type="text" name="desc" id="desc" value="0.00" readonly class="form-control"/>
+                                    <input type="text" name="desc" id="desc" value="0.000" readonly class="form-control"/>
                                   </div>                                
                                 </div> 
                               </div> 
@@ -356,7 +357,7 @@ $cont1++;
                                     <div class="input-group-addon">
                                       <i class="glyphicon glyphicon-usd"></i>
                                     </div>
-                                    <input type="text" name="tot" id="tot" value="0.00" readonly class="form-control"/>
+                                    <input type="text" name="tot" id="tot" value="0.000" readonly class="form-control"/>
                                   </div>                                
                                 </div> 
                               </div>

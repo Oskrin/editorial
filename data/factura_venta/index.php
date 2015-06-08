@@ -40,6 +40,7 @@ $cont1++;
     <link href="../../dist/css/ui.jqgrid.css" rel="stylesheet" type="text/css"/> 
     <link href="../../plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css" />
   </head>
+  
   <body class="skin-blue">
     <div class="wrapper">
       <?php banner_1(); ?>
@@ -329,7 +330,7 @@ $cont1++;
                                     <div class="input-group-addon">
                                       <i class="glyphicon glyphicon-usd"></i>
                                     </div>
-                                    <input type="text" name="total_p" id="total_p" value="0.00" readonly class="form-control"/>
+                                    <input type="text" name="total_p" id="total_p" value="0.000" readonly class="form-control"/>
                                   </div>                                
                                 </div> 
                               </div>
@@ -341,7 +342,7 @@ $cont1++;
                                     <div class="input-group-addon">
                                       <i class="glyphicon glyphicon-usd"></i>
                                     </div>
-                                    <input type="text" name="total_p2" id="total_p2" value="0.00" readonly class="form-control"/>
+                                    <input type="text" name="total_p2" id="total_p2" value="0.000" readonly class="form-control"/>
                                   </div>                                
                                 </div> 
                               </div>
@@ -353,7 +354,7 @@ $cont1++;
                                     <div class="input-group-addon">
                                       <i class="glyphicon glyphicon-usd"></i>
                                     </div>
-                                    <input type="text" name="iva" id="iva" value="0.00" readonly class="form-control"/>
+                                    <input type="text" name="iva" id="iva" value="0.000" readonly class="form-control"/>
                                   </div>                                
                                 </div> 
                               </div>
@@ -365,7 +366,7 @@ $cont1++;
                                     <div class="input-group-addon">
                                       <i class="glyphicon glyphicon-usd"></i>
                                     </div>
-                                    <input type="text" name="desc" id="desc" value="0.00" readonly class="form-control"/>
+                                    <input type="text" name="desc" id="desc" value="0.000" readonly class="form-control"/>
                                   </div>                                
                                 </div> 
                               </div> 
@@ -377,7 +378,7 @@ $cont1++;
                                     <div class="input-group-addon">
                                       <i class="glyphicon glyphicon-usd"></i>
                                     </div>
-                                    <input type="text" name="tot" id="tot" value="0.00" readonly class="form-control"/>
+                                    <input type="text" name="tot" id="tot" value="0.000" readonly class="form-control"/>
                                   </div>                                
                                 </div> 
                               </div>
