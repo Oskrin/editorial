@@ -421,7 +421,7 @@ function entrar3() {
                                           sub1 = parseFloat(subtotal).toFixed(3);
                                           iva1 = ((sub1 * 12) / 100).toFixed(3);
                                           descu_total1 = parseFloat(dd['cal_des']).toFixed(2);
-                                          t_fc1 = ((parseFloat(sub1) + (parseFloat(iva1)) + parseFloat($("#total_p").val()))).toFixed(2);
+                                          t_fc1 = ((parseFloat(sub1) + (parseFloat(iva1)))).toFixed(2);
                                           
                                           ////////////////////////valores////////////////////
                                           sub_total =  (parseFloat(sub_total) + parseFloat(sub1)).toFixed(3);
@@ -436,7 +436,7 @@ function entrar3() {
                                         sub2 = (parseFloat((subtotal / 1.12))).toFixed(3);
                                         iva2 = (sub2 * 0.12).toFixed(3);
                                         descu_total2 = parseFloat(dd['cal_des']).toFixed(2);
-                                        t_fc2 = ((parseFloat(sub2) + (parseFloat(iva2)) + parseFloat($("#total_p").val()))).toFixed(2);
+                                        t_fc2 = ((parseFloat(sub2) + (parseFloat(iva2)))).toFixed(2);
                                         ////////////////////////valores////////////////////
                                           sub_total =  (parseFloat(sub_total) + parseFloat(sub2)).toFixed(3);
                                           iva_total =  (parseFloat(iva_total) + parseFloat(iva2)).toFixed(3);
