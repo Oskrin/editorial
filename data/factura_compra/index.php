@@ -67,7 +67,7 @@ $cont1++;
                               <div class="form-group">
                                 <label>Fecha Actual:</label>
                                 <div class="input-group">
-                                  <input type="text" name="fecha_actual"  id="fecha_actual" readonly class="form-control timepicker"/>
+                                  <input type="text" name="fecha_actual"  id="fecha_actual" readonly class="form-control"/>
                                   <input type="hidden" name="comprobante"  id="comprobante" readonly class="form-control" value="<?php echo $cont1 ?>"/>
                                   <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
