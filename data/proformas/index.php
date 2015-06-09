@@ -66,7 +66,7 @@ $cont1 = 0;
                                 <div class="form-group">
                                   <label>Fecha Actual:</label>
                                   <div class="input-group">
-                                    <input type="text" name="fecha_actual"  id="fecha_actual" readonly class="form-control timepicker"/>
+                                    <input type="text" name="fecha_actual"  id="fecha_actual" readonly class="form-control"/>
                                     <input type="hidden" name="comprobante"  id="comprobante" readonly class="form-control" value="<?php echo $cont1 ?>"/>
                                     <div class="input-group-addon">
                                       <i class="fa fa-calendar"></i>
@@ -185,9 +185,14 @@ $cont1 = 0;
                             <div class="col-md-1">
                               <div class="form-group">
                                 <label>DESC.</label>
-                                <input type="number" name="descuento"  id="descuento"  min="1" class="form-control" />
+                                <input type="number" name="descuento"  id="descuento"  min="0" placeholder="%" class="form-control" />
                                 <input type="hidden" name="cod_producto"  id="cod_producto" readonly class="form-control" />
+                                <input type="hidden" name="disponibles"  id="disponibles" readonly class="form-control" />
                                 <input type="hidden" name="iva_producto"  id="iva_producto" readonly class="form-control" />
+                                <input type="hidden" name="carga_series"  id="carga_series" readonly class="form-control" />
+                                <input type="hidden" name="des"  id="des" readonly class="form-control" />
+                                <input type="hidden" name="incluye"  id="incluye" readonly class="form-control" />
+                                <input type="hidden" name="inventar"  id="inventar" readonly class="form-control" />
                               </div>  
                             </div> 
                          </div>
