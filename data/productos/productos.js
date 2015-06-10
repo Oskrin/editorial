@@ -667,11 +667,11 @@ function inicio() {
     $("#iva").change(function() {
        if($("#iva").val() == "Si"){
           $("#incluye").val("Si");
-          $("#incluye").attr("disabled", false);
+          $("#incluye").attr("readOnly", false);
        }else{
         if($("#iva").val() == "No"){
               $("#incluye").val("No");
-              $("#incluye").attr("disabled", true);
+              $("#incluye").attr("readOnly", true);
         }
        }
     });
