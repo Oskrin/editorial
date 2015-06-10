@@ -1356,11 +1356,11 @@ function flecha_atras(){
                 $('#cuotas').children().remove().end();
                 $("#cuotas").attr("disabled", true); 
                 $("#list").jqGrid("clearGridData", true);
-                $("#total_p").val("0.00");
-                $("#total_p2").val("0.00");
-                $("#iva").val("0.00");
-                $("#desc").val("0.00");
-                $("#tot").val("0.00");
+                $("#total_p").val("0.000");
+                $("#total_p2").val("0.000");
+                $("#iva").val("0.000");
+                $("#desc").val("0.000");
+                $("#tot").val("0.000");
 
                 ///////////////////llamar factura flechas primera parte/////
                 $.getJSON('retornar_factura_venta.php?com=' + valor, function(data) {
@@ -1500,11 +1500,11 @@ function flecha_siguiente() {
                 $("#cuotas").attr("disabled", true);
 
                 $("#list").jqGrid("clearGridData", true);
-                $("#total_p").val("0.00");
-                $("#total_p2").val("0.00");
-                $("#iva").val("0.00");
-                $("#desc").val("0.00");
-                $("#tot").val("0.00");
+                $("#total_p").val("0.000");
+                $("#total_p2").val("0.000");
+                $("#iva").val("0.000");
+                $("#desc").val("0.000");
+                $("#tot").val("0.000");
             
                 $.getJSON('retornar_factura_venta.php?com=' + valor, function(data) {
                     var tama = data.length;
@@ -2579,11 +2579,11 @@ function inicio() {
             $("#cuotas").attr("disabled", true); 
 
             $("#list").jqGrid("clearGridData", true);
-            $("#total_p").val("0.00");
-            $("#total_p2").val("0.00");
-            $("#iva").val("0.00");
-            $("#desc").val("0.00");
-            $("#tot").val("0.00");
+            $("#total_p").val("0.000");
+            $("#total_p2").val("0.000");
+            $("#iva").val("0.000");
+            $("#desc").val("0.000");
+            $("#tot").val("0.000");
             
             $.getJSON('retornar_factura_venta.php?com=' + valor, function(data) {
                 var tama = data.length;
@@ -2747,11 +2747,11 @@ function inicio() {
         $("#cuotas").attr("disabled", true);
 
         $("#list").jqGrid("clearGridData", true);
-        $("#total_p").val("0.00");
-        $("#total_p2").val("0.00");
-        $("#iva").val("0.00");
-        $("#desc").val("0.00");
-        $("#tot").val("0.00");
+        $("#total_p").val("0.000");
+        $("#total_p2").val("0.000");
+        $("#iva").val("0.000");
+        $("#desc").val("0.000");
+        $("#tot").val("0.000");
                 
         $.getJSON('retornar_factura_venta.php?com=' + valor, function(data) {
                 var tama = data.length;
@@ -3145,11 +3145,11 @@ function inicio() {
         $('#cuotas').children().remove().end();
         $("#cuotas").attr("disabled", true); 
         $("#list").jqGrid("clearGridData", true);
-        $("#total_p").val("0.00");
-        $("#total_p2").val("0.00");
-        $("#iva").val("0.00");
-        $("#desc").val("0.00");
-        $("#tot").val("0.00");
+        $("#total_p").val("0.000");
+        $("#total_p2").val("0.000");
+        $("#iva").val("0.000");
+        $("#desc").val("0.000");
+        $("#tot").val("0.000");
                 
             $.getJSON('../procesos/retornar_factura_venta.php?com=' + valor, function(data) {
                 var tama = data.length;
@@ -3194,8 +3194,7 @@ function inicio() {
             $.getJSON('../procesos/retornar_factura_venta_credito.php?com=' + valor, function(data) {
                 var tama = data.length;
                 if (tama !== 0) {
-                    for (var i = 0; i < tama; i = i + 4)
-                {
+                    for (var i = 0; i < tama; i = i + 4) {
                     $("#formas").val(data[i]);
                     $("#adelanto").val(data[i + 1 ]);
                     $("#meses").val(data[i + 2 ]);
@@ -3225,8 +3224,7 @@ function inicio() {
             $.getJSON('../procesos/retornar_factura_venta2.php?com=' + valor, function(data) {
                 var tama = data.length;
                 if (tama !== 0) {
-                     for (var i = 0; i < tama; i = i + 9)
-                         {
+                     for (var i = 0; i < tama; i = i + 9) {
                         var datarow = {
                             cod_producto: data[i], 
                             codigo: data[i + 1], 

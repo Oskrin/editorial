@@ -189,7 +189,7 @@ include('../menu/app.php');
                                 </div>
 
                                 <div class="form-group">
-                                  <label>Iva:</label>
+                                  <label> Contiene Iva:</label>
                                   <select class="form-control" name="iva" id="iva">
                                     <option value="Si" selected>Si</option> 
                                     <option value="No">No</option>     
