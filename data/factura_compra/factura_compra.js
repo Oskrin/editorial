@@ -645,7 +645,7 @@ if ($("#serie").val() === "") {
                                         v2[i] = datos['cantidad'];
                                         v3[i] = datos['precio_u'];
                                         v4[i] = datos['descuento'];
-                                        v5[i] = datos['precio_t'];
+                                        v5[i] = datos['total'];
                                     }
                                     for (i = 0; i < fil.length; i++) {
                                         string_v1 = string_v1 + "|" + v1[i];
@@ -711,11 +711,11 @@ $.ajax({
                 $("#meses").val("");
                 $("#cuotas").val("");
                 $("#list").jqGrid("clearGridData", true);
-                $("#total_p").val("0.00");
-                $("#total_p2").val("0.00");
-                $("#iva").val("0.00");
-                $("#desc").val("0.00");
-                $("#tot").val("0.00");
+                $("#total_p").val("0.000");
+                $("#total_p2").val("0.000");
+                $("#iva").val("0.000");
+                $("#desc").val("0.000");
+                $("#tot").val("0.000");
 
                 $.getJSON('retornar_factura_compra.php?com=' + valor, function(data) {
                     var tama = data.length;
@@ -801,11 +801,11 @@ $.ajax({
             $("#meses").val("");
             $("#cuotas").val("");
             $("#list").jqGrid("clearGridData", true);
-            $("#total_p").val("0.00");
-            $("#total_p2").val("0.00");
-            $("#iva").val("0.00");
-            $("#desc").val("0.00");
-            $("#tot").val("0.00");
+            $("#total_p").val("0.000");
+            $("#total_p2").val("0.000");
+            $("#iva").val("0.000");
+            $("#desc").val("0.000");
+            $("#tot").val("0.000");
             ///////////////////////////////////////////////////   
     
             $.getJSON('retornar_factura_compra.php?com=' + valor, function(data) {
