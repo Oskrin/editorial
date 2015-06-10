@@ -86,7 +86,7 @@
         $pdf->Cell(30, 6, utf8_decode($row[35]),0,1, 'L',0);                                                                                         
     }       
     $pdf->Ln(3);        
-    $sql=pg_query("select * from detalle_proforma,productos where id_proforma='$_GET[id]'  and detalle_proforma.cod_productos=productos.cod_productos order by id_detalle_proforma asc;");
+    
     $pdf->SetX(1);
     $pdf->Cell(40, 6, utf8_decode('Código'),1,0, 'C',0);                                     
     $pdf->Cell(65, 6, utf8_decode('Producto'),1,0, 'C',0);                                     
@@ -94,7 +94,7 @@
     $pdf->Cell(25, 6, utf8_decode('PVP'),1,0, 'C',0);                                     
     $pdf->Cell(25, 6, utf8_decode('Descuento'),1,0, 'C',0);                                         
     $pdf->Cell(25, 6, utf8_decode('Total'),1,1, 'C',0);    
-          
+    $sql=pg_query("select * from detalle_proforma,productos where id_proforma='$_GET[id]'  and productos.incluye_iva = 'No' and detalle_proforma.cod_productos=productos.cod_productos order by id_detalle_proforma asc;");          
     while($row=pg_fetch_row($sql)){        
         $pdf->SetX(1);
         $pdf->Cell(40, 6, maxCaracter(utf8_decode($row[9]),15),0,0, 'L',0);                                     
@@ -104,7 +104,26 @@
         $pdf->Cell(25, 6, utf8_decode($row[5]),0,0, 'C',0);                                     
         $pdf->Cell(25, 6, utf8_decode($row[6]),0,1, 'C',0);                                            
     }
+    $iva_base = 1.12;
+    $sql=pg_query("select * from detalle_proforma,productos where id_proforma='$_GET[id]' and productos.incluye_iva = 'Si'  and detalle_proforma.cod_productos=productos.cod_productos order by id_detalle_proforma asc;");          
+    while($row=pg_fetch_row($sql)){       
+        $pdf->SetX(1);
+         $total_si = 0;
+        $total_sit = 0;
+        $total_si = $row[6] / $iva_base;
+        $total_sit = $total_si / $row[3];
 
+        $total_si = truncateFloat($total_si,2);
+        $total_sit = truncateFloat($total_sit,2);
+
+        $pdf->Cell(40, 6, maxCaracter(utf8_decode($row[9]),15),0,0, 'L',0);                                     
+        $pdf->Cell(65, 6, maxCaracter(utf8_decode($row[11]),30),0,0, 'L',0);                                     
+
+        $pdf->Cell(25, 6, utf8_decode($row[3]),0,0, 'C',0);                                     
+        $pdf->Cell(25, 6, utf8_decode($total_sit),0,0, 'C',0);                                     
+        $pdf->Cell(25, 6, utf8_decode($row[5]),0,0, 'C',0);                                     
+        $pdf->Cell(25, 6, utf8_decode($total_si),0,1, 'C',0);                                            
+    }
     $pdf->SetX(1);   
     $pdf->Ln(5);
     $pdf->Cell(207, 0, utf8_decode(""),1,1, 'R',0);

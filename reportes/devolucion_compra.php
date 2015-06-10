@@ -97,7 +97,7 @@
     $temp3 = $pdf->temp3;
     $temp4 = $pdf->temp4;
     $temp5 = $pdf->temp5;    
-    $sql=pg_query("select * from detalle_devolucion_compra,productos where detalle_devolucion_compra.cod_productos=productos.cod_productos and id_devolucion_compra='$_GET[id]' order by id_devolucion_compra asc;");
+    $sql=pg_query("select * from detalle_devolucion_compra,productos where detalle_devolucion_compra.cod_productos=productos.cod_productos and id_devolucion_compra='$_GET[id]' and productos.incluye_iva= 'No' order by id_devolucion_compra asc;");
     while($row=pg_fetch_row($sql)){                
         $pdf->SetX(1);                  
         $pdf->Cell(40, 5, maxCaracter(utf8_decode($row[9]),20),0,0, 'L',0);
@@ -108,20 +108,41 @@
         $pdf->Cell(25, 5, maxCaracter(utf8_decode($row[6]),20),0,0, 'C',0);                                     
         $pdf->Ln(5);                                                                
     }
+    $iva_base = 1.12;
+    $sql=pg_query("select * from detalle_devolucion_compra,productos where detalle_devolucion_compra.cod_productos=productos.cod_productos and id_devolucion_compra='$_GET[id]' and productos.incluye_iva= 'Si' order by id_devolucion_compra asc;");
+    while($row=pg_fetch_row($sql)){                
+        $pdf->SetX(1);               
+        
+        $total_si = 0;
+        $total_sit = 0;
+        $total_si = $row[6] / $iva_base;
+        $total_sit = $total_si / $row[3];
+        $total_si = truncateFloat($total_si,2);
+        $total_sit = truncateFloat($total_sit,2);
+
+        $pdf->Cell(40, 5, maxCaracter(utf8_decode($row[9]),20),0,0, 'L',0);
+        $pdf->Cell(80, 5, maxCaracter(utf8_decode($row[11]),20),0,0, 'L',0);
+        $pdf->Cell(20, 5, maxCaracter(utf8_decode($row[3]),80),0,0, 'C',0);
+
+        $pdf->Cell(20, 5, maxCaracter(utf8_decode($total_sit),20),0,0, 'C',0);        //precio
+        $pdf->Cell(20, 5, maxCaracter(utf8_decode($row[5]),20),0,0, 'C',0);                ///descuento                     
+        $pdf->Cell(25, 5, maxCaracter(utf8_decode($total_si),20),0,0, 'C',0);                            //total         
+        $pdf->Ln(5);                                                                
+    }
     $pdf->SetX(1);                  
     $pdf->Ln(5);   
-    $sql=pg_query("select factura_compra.descuento_compra,factura_compra.tarifa0,factura_compra.tarifa12,factura_compra.iva_compra,factura_compra.total_compra from factura_compra,detalle_factura_compra,productos where factura_compra.id_factura_compra=detalle_factura_compra.id_factura_compra and detalle_factura_compra.cod_productos=productos.cod_productos and detalle_factura_compra.id_factura_compra='$_GET[id]'");    
+    $sql=pg_query("select factura_compra.descuento_compra,factura_compra.tarifa0,factura_compra.tarifa12,factura_compra.iva_compra,factura_compra.total_compra from factura_compra,detalle_factura_compra,productos where factura_compra.id_factura_compra=detalle_factura_compra.id_factura_compra and detalle_factura_compra.cod_productos=productos.cod_productos and detalle_factura_compra.id_factura_compra='$_GET[id]' LIMIT 1");    
     while($row=pg_fetch_row($sql)){        
         $pdf->Cell(173, 6, utf8_decode("Tarifa 0"),0,0, 'R',0);
-        $pdf->Cell(35, 6, maxCaracter(utf8_decode($temp1),20),0,1, 'C',0);
+        $pdf->Cell(35, 6, maxCaracter(truncateFloat($temp1,2),20),0,1, 'C',0);
         $pdf->Cell(173, 6, utf8_decode("Tarifa 12"),0,0, 'R',0);
-        $pdf->Cell(35, 6, maxCaracter(utf8_decode($temp2),20),0,1, 'C',0);
+        $pdf->Cell(35, 6, maxCaracter(truncateFloat($temp2,2),20),0,1, 'C',0);
         $pdf->Cell(173, 6, utf8_decode("Iva 12%"),0,0, 'R',0);
-        $pdf->Cell(35, 6, maxCaracter(utf8_decode($temp3),20),0,1, 'C',0);
+        $pdf->Cell(35, 6, maxCaracter(truncateFloat($temp3,2),20),0,1, 'C',0);
         $pdf->Cell(173, 6, utf8_decode("Descuento"),0,0, 'R',0);
-        $pdf->Cell(35, 6, maxCaracter(utf8_decode($temp4),20),0,1, 'C',0);
+        $pdf->Cell(35, 6, maxCaracter(truncateFloat($temp4,2),20),0,1, 'C',0);
         $pdf->Cell(173, 6, utf8_decode("Total"),0,0, 'R',0);
-        $pdf->Cell(35, 6, maxCaracter(utf8_decode($temp5),20),0,1, 'C',0);
+        $pdf->Cell(35, 6, maxCaracter(truncateFloat($temp5,2),20),0,1, 'C',0);
     } 
     $pdf->Output();
 ?>

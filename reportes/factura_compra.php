@@ -87,7 +87,8 @@
     $pdf->SetX(5);    
     $pdf->SetFont('Amble-Regular','',9); 
     $total = 0;      
-    $sql=pg_query("select detalle_factura_compra.cantidad,productos.articulo,detalle_factura_compra.precio_compra,detalle_factura_compra.total_compra from factura_compra,detalle_factura_compra,productos where factura_compra.id_factura_compra=detalle_factura_compra.id_factura_compra and detalle_factura_compra.cod_productos=productos.cod_productos and detalle_factura_compra.id_factura_compra='$_GET[id]'");   
+    $iva_base = 1.12;
+    $sql=pg_query("select detalle_factura_compra.cantidad,productos.articulo,detalle_factura_compra.precio_compra,detalle_factura_compra.total_compra from factura_compra,detalle_factura_compra,productos where factura_compra.id_factura_compra=detalle_factura_compra.id_factura_compra and detalle_factura_compra.cod_productos=productos.cod_productos and detalle_factura_compra.id_factura_compra='$_GET[id]' and productos.incluye_iva = 'No'");   
     while($row=pg_fetch_row($sql)){                
         $pdf->SetX(1);                  
         $pdf->Cell(35, 5, maxCaracter(utf8_decode($row[0]),20),0,0, 'C',0);
@@ -96,20 +97,36 @@
         $pdf->Cell(30, 5, maxCaracter(utf8_decode($row[3]),20),0,0, 'C',0);                                     
         $pdf->Ln(5);                                                                
     }
+    $sql=pg_query("select detalle_factura_compra.cantidad,productos.articulo,detalle_factura_compra.precio_compra,detalle_factura_compra.total_compra from factura_compra,detalle_factura_compra,productos where factura_compra.id_factura_compra=detalle_factura_compra.id_factura_compra and detalle_factura_compra.cod_productos=productos.cod_productos and detalle_factura_compra.id_factura_compra='$_GET[id]' and productos.incluye_iva = 'Si'");   
+    while($row=pg_fetch_row($sql)){                
+        $total_si = 0;
+        $total_sit = 0;
+        $total_si = $row[3] / $iva_base;
+        $total_sit = $total_si / $row[0];
+
+        $total_si = truncateFloat($total_si,2);
+        $total_sit = truncateFloat($total_sit,2);
+        $pdf->SetX(1);                  
+        $pdf->Cell(35, 5, maxCaracter(utf8_decode($row[0]),20),0,0, 'C',0);
+        $pdf->Cell(110, 5, maxCaracter(utf8_decode($row[1]),80),0,0, 'L',0);
+        $pdf->Cell(30, 5, maxCaracter(utf8_decode($total_sit),20),0,0, 'C',0);        
+        $pdf->Cell(30, 5, maxCaracter(utf8_decode($total_si),20),0,0, 'C',0);                                     
+        $pdf->Ln(5);                                                                
+    }
     $pdf->SetX(1);                  
     $pdf->Ln(5);   
-    $sql=pg_query("select factura_compra.descuento_compra,factura_compra.tarifa0,factura_compra.tarifa12,factura_compra.iva_compra,factura_compra.total_compra from factura_compra,detalle_factura_compra,productos where factura_compra.id_factura_compra=detalle_factura_compra.id_factura_compra and detalle_factura_compra.cod_productos=productos.cod_productos and detalle_factura_compra.id_factura_compra='$_GET[id]'");    
+    $sql=pg_query("select factura_compra.descuento_compra,factura_compra.tarifa0,factura_compra.tarifa12,factura_compra.iva_compra,factura_compra.total_compra from factura_compra,detalle_factura_compra,productos where factura_compra.id_factura_compra=detalle_factura_compra.id_factura_compra and detalle_factura_compra.cod_productos=productos.cod_productos and detalle_factura_compra.id_factura_compra='$_GET[id]' LIMIT 1");    
     while($row=pg_fetch_row($sql)){
         $pdf->Cell(173, 6, utf8_decode("Descuento"),0,0, 'R',0);
-        $pdf->Cell(35, 6, maxCaracter(utf8_decode($row[0]),20),0,1, 'C',0);
+        $pdf->Cell(35, 6, maxCaracter(truncateFloat($row[0],2),20),0,1, 'C',0);
         $pdf->Cell(173, 6, utf8_decode("Tarifa 0"),0,0, 'R',0);
-        $pdf->Cell(35, 6, maxCaracter(utf8_decode($row[1]),20),0,1, 'C',0);
+        $pdf->Cell(35, 6, maxCaracter(truncateFloat($row[1],2),20),0,1, 'C',0);
         $pdf->Cell(173, 6, utf8_decode("Tarifa 12"),0,0, 'R',0);
-        $pdf->Cell(35, 6, maxCaracter(utf8_decode($row[2]),20),0,1, 'C',0);
+        $pdf->Cell(35, 6, maxCaracter(truncateFloat($row[2],2),20),0,1, 'C',0);
         $pdf->Cell(173, 6, utf8_decode("Iva 12%"),0,0, 'R',0);
-        $pdf->Cell(35, 6, maxCaracter(utf8_decode($row[3]),20),0,1, 'C',0);
+        $pdf->Cell(35, 6, maxCaracter(truncateFloat($row[3],2),20),0,1, 'C',0);
         $pdf->Cell(173, 6, utf8_decode("Total"),0,0, 'R',0);
-        $pdf->Cell(35, 6, maxCaracter(utf8_decode($row[4]),20),0,1, 'C',0);
+        $pdf->Cell(35, 6, maxCaracter(truncateFloat($row[4],2),20),0,1, 'C',0);
     }
     //////////
     $sql=pg_query("select * from series_compra,factura_compra,productos where factura_compra.id_factura_compra=series_compra.id_factura_compra and productos.cod_productos=series_compra.cod_productos and series_compra.id_factura_compra='$_GET[id]'");
