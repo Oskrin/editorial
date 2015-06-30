@@ -261,6 +261,7 @@ function guardar_inventario() {
             string_v5 = string_v5 + "|" + v5[i];
             string_v6 = string_v6 + "|" + v6[i];
         }
+        
         $.ajax({
             type: "POST",
             url: "guardar_inventario.php",
@@ -699,10 +700,12 @@ function inicio() {
     {
         closeOnEscape: true
     });
-    jQuery(window).bind('resize', function () {
-        jQuery("#list").setGridWidth(jQuery('#grid_container').width(), true);
-    }).trigger('resize');
+    
 
 }
+
+jQuery(window).bind('resize', function () {
+        jQuery("#list").setGridWidth(jQuery('#grid_container').width(), true);
+    }).trigger('resize');
 
 
