@@ -124,7 +124,7 @@ include('../menu/app.php');
                                     <div class="input-group-addon">
                                       <i class="fa fa-usd"></i>
                                     </div>
-                                    <input type="text" name="precio_compra" id="precio_compra"   placeholder="0.00" class="form-control" />
+                                    <input type="text" name="precio_compra" id="precio_compra"   placeholder="0.00" value="0.00" class="form-control" />
                                   </div>
                                 </div>
 

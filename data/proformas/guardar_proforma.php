@@ -21,8 +21,7 @@ while ($row = pg_fetch_row($consulta)) {
 $cont1++;
 //
 ////////////guardar proforma////////
-pg_query("insert into proforma values('$cont1','$_POST[id_cliente]','$_SESSION[id]','1','$_POST[comprobante]','$_POST[fecha_actual]','$_POST[hora_actual]','$_POST[tipo_precio]'
-    ,'$_POST[tarifa0]','$_POST[tarifa12]','$_POST[iva]','$_POST[desc]','$_POST[tot]','$_POST[observaciones]','Activo')");
+pg_query("insert into proforma values('$cont1','$_POST[id_cliente]','$_SESSION[id]','1','$cont1','$_POST[fecha_actual]','$_POST[hora_actual]','$_POST[tipo_precio]','$_POST[tarifa0]','$_POST[tarifa12]','$_POST[iva]','$_POST[desc]','$_POST[tot]','$_POST[observaciones]','Activo')");
 ////////////////////////////////////////
 //
 ////////////agregar detalle_proforma////////
