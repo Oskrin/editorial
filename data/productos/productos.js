@@ -536,7 +536,7 @@ function inicio() {
     $("#cod_barras").keyup(function() {
         $.ajax({
             type: "POST",
-            url: "comparar_codigo.php",
+            url: "comparar_codigo2.php",
             data: "codigo=" + $("#cod_barras").val(),
             success: function(data) {
                 var val = data;
