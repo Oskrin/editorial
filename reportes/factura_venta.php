@@ -61,13 +61,13 @@
     /////////medio
     $pdf->SetFont('Amble-Regular','',10);       
     $pdf->Text(30, 48, maxCaracter(utf8_decode($cliente),80),1,0, 'L',0);/////cliente
-    $pdf->Text(30, 55, maxCaracter(utf8_decode($direccion),50),1,0, 'L',0);////direccion
+    $pdf->Text(30, 55, maxCaracter(utf8_decode($direccion),35),1,0, 'L',0);////direccion
     $pdf->Text(113, 55, maxCaracter(utf8_decode($telefono),20),1,0, 'L',0);////telefono
     $pdf->Text(30, 62, maxCaracter(utf8_decode($ci_ruc),20),1,0, 'L',0);////ruc ci
     $pdf->Text(113, 62, maxCaracter(utf8_decode($fecha),20),1,0, 'L',0);/////fecha
 
     $pdf->Text(180, 48, maxCaracter(utf8_decode($cliente),80),1,0, 'L',0);/////cliente
-    $pdf->Text(180, 55, maxCaracter(utf8_decode($direccion),50),1,0, 'L',0);////direccion
+    $pdf->Text(180, 55, maxCaracter(utf8_decode($direccion),35),1,0, 'L',0);////direccion
     $pdf->Text(268, 55, maxCaracter(utf8_decode($telefono),20),1,0, 'L',0);////telefono
     $pdf->Text(180, 62, maxCaracter(utf8_decode($ci_ruc),20),1,0, 'L',0);////ruc ci
     $pdf->Text(268, 62, maxCaracter(utf8_decode($fecha),20),1,0, 'L',0);/////fecha
@@ -95,12 +95,12 @@
         $total_sit = truncateFloat($total_sit,2);
 
         $pdf->Text(15, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);    
-        $pdf->Text(25, $yy, maxCaracter(utf8_decode($row[1]),50),0,0, 'L',0);            
+        $pdf->Text(25, $yy, maxCaracter(utf8_decode($row[1]),35),0,0, 'L',0);            
         $pdf->Text(95, $yy, maxCaracter(number_format($total_sit,2,',','.'),6),0,0, 'L',0);            
         $pdf->Text(120, $yy, maxCaracter(number_format($total_si,2,',','.'),6),0,0, 'L',0);            
 
         $pdf->Text(165, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);    
-        $pdf->Text(180, $yy, maxCaracter(utf8_decode($row[1]),50),0,0, 'L',0);            
+        $pdf->Text(180, $yy, maxCaracter(utf8_decode($row[1]),35),0,0, 'L',0);            
         $pdf->Text(245, $yy, maxCaracter(number_format($total_si,2,',','.'),6),0,0, 'L',0);    
         $pdf->Text(270, $yy, maxCaracter(number_format($total_si,2,',','.'),6),0,0, 'L',0);    
         $yy = $yy + 5;        
@@ -111,12 +111,13 @@
     while($row = pg_fetch_row($sql)){
         $temp_1 =  number_format($row[3],2,',','.');
         $pdf->Text(15, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);    
-        $pdf->Text(25, $yy, maxCaracter(utf8_decode($row[1]),50),0,0, 'L',0);    
+        $pdf->Text(25, $yy, maxCaracter(utf8_decode($row[1]),35),0,0, 'L',0);   
+        //$pdf->MultiCell(25,$yy,maxCaracter(utf8_decode($row[1]),35) ,0,'L',false);
         $pdf->Text(95, $yy, maxCaracter(utf8_decode($row[2]),6),0,0, 'L',0);    
         $pdf->Text(120, $yy, maxCaracter($temp_1,6),0,0, 'L',0);            
 
         $pdf->Text(165, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);    
-        $pdf->Text(180, $yy, maxCaracter(utf8_decode($row[1]),50),0,0, 'L',0);    
+        $pdf->Text(180, $yy, maxCaracter(utf8_decode($row[1]),35),0,0, 'L',0);    
         $pdf->Text(245, $yy, maxCaracter(utf8_decode($row[2]),6),0,0, 'L',0);    
         $pdf->Text(270, $yy, maxCaracter($temp_1,6),0,0, 'L',0);    
         $yy = $yy + 5;        

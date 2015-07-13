@@ -1,4 +1,4 @@
-$(document).on("ready", inicio);
+﻿$(document).on("ready", inicio);
 function evento(e) {
     e.preventDefault();
 }
@@ -321,7 +321,7 @@ function validar_acceso(){
         alertify.error("Ingrese la clave");
     }else{
         $.ajax({
-            url: '../procesos/validar_acceso.php',
+            url: '../../procesos/validar_acceso.php',
             type: 'POST',
             data: "clave=" + $("#clave").val(),
             success: function(data) {
@@ -350,7 +350,7 @@ function aceptar(){
             if (val == 1) {
                 alertify.error('Error... El Producto tiene movimientos en el sistema');						    		
                 setTimeout(function() {
-                    location.reload();
+                    //location.reload();
                 },1000);
             }else{
                 alertify.success('Producto Eliminado Correctamente');						    		
