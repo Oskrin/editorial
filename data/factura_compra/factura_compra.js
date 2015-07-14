@@ -628,6 +628,7 @@ if ($("#serie").val() === "") {
                                 if (tam.length === 0) {
                                     alertify.error("Error... Inrese productos a la factura");
                                 } else {
+                                    $("#btnGuardar").attr("disabled", true);
                                     var v1 = new Array();
                                     var v2 = new Array();
                                     var v3 = new Array();

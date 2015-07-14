@@ -410,6 +410,7 @@ function guardar_proforma() {
             if (tam.length === 0) {
                 alertify.alert("Error... Llene productos en la proforma");
             } else {
+                $("#btnGuardar").attr("disabled", true);
                 var v1 = new Array();
                 var v2 = new Array();
                 var v3 = new Array();
