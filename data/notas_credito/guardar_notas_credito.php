@@ -23,7 +23,7 @@ $cont1++;
 //////////////////////////////////////////////////
 //
 ////////////guardar notas credito////////
-pg_query("insert into devolucion_venta values('$cont1','1','$_POST[id_cliente]','$_SESSION[id]','$_POST[comprobante]','$_POST[fecha_actual]','$_POST[hora_actual]'
+pg_query("insert into devolucion_venta values('$cont1','1','$_POST[id_cliente]','$_SESSION[id]','$cont1','$_POST[fecha_actual]','$_POST[hora_actual]'
     ,'$_POST[tipo_comprobante]','$_POST[serie]', '$_POST[tarifa0]','$_POST[tarifa12]','$_POST[iva]','$_POST[desc]','$_POST[tot]','$_POST[observaciones]','Activo')");
 
 ////////////////////////////////////////
