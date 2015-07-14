@@ -1268,6 +1268,7 @@ function guardar_factura() {
                                                 $("#meses").focus();
                                                 alertify.error("Meses a diferir");
                                             } else {
+                                                $("#btnGuardar").attr("disabled", true);
                                                 var v1 = new Array();
                                                 var v2 = new Array();
                                                 var v3 = new Array();
@@ -1902,7 +1903,13 @@ function inicio() {
             success: function(data) {
                 var val = data;
                 if(val != "") {
-                    window.open("../../reportes/factura_venta.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
+                    if($("#tipo_venta").val() == "FACTURA"){
+                        window.open("../../reportes/factura_venta.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
+                    }else{
+                         if($("#tipo_venta").val() == "NOTA"){
+                            window.open("../../reportes/nota_venta.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
+                         }
+                    }
                 } else {
                     alertify.alert("Factura no creada!!");
                 }   

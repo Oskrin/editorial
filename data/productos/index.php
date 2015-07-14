@@ -134,7 +134,7 @@ include('../menu/app.php');
                                     <div class="input-group-addon">
                                       <i class="fa fa-usd"></i>
                                     </div>
-                                    <input type="text" name="precio_mayorista" id="precio_mayorista" class="form-control" />
+                                    <input type="text" name="precio_mayorista" id="precio_mayorista" class="form-control" value="0.00" />
                                   </div>
                                 </div>
 
@@ -144,7 +144,7 @@ include('../menu/app.php');
                                     <div class="input-group-addon">
                                       <i class="fa fa-usd"></i>
                                     </div>
-                                    <input type="text" name="utilidad_mayorista" id="utilidad_mayorista" class="form-control" />
+                                    <input type="text" name="utilidad_mayorista" id="utilidad_mayorista" class="form-control" value="0.00" />
                                   </div>
                                 </div>
 
