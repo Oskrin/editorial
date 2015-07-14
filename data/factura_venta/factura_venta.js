@@ -1380,6 +1380,7 @@ function flecha_atras(){
                 $("#meses").val("");
                 $('#cuotas').children().remove().end();
                 $("#cuotas").attr("disabled", true); 
+                
                 $("#list").jqGrid("clearGridData", true);
                 $("#total_p").val("0.000");
                 $("#total_p2").val("0.000");
@@ -1814,21 +1815,6 @@ function inicio() {
     $("#btnModificar").click(function(e) {
         e.preventDefault();
     });
-    $("#btnImprimir").click(function (){  
-        $.ajax({
-            type: "POST",
-            url: "../../procesos/validacion.php",
-            data: "comprobante=" + $("#comprobante").val() + "&tabla=" + "factura_venta" + "&id_tabla=" + "id_factura_venta" + "&tipo=" + 1,
-            success: function(data) {
-                var val = data;
-                if(val != "") {
-                    window.open("../../reportes/factura_venta.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
-                } else {
-                    alertify.alert("Factura no creada!!");
-                }   
-            }
-        });
-    });
 
     $("#btnNuevo").click(function(e) {
         e.preventDefault();
@@ -1908,9 +1894,21 @@ function inicio() {
     $("#buscar_notas_venta").dialog(dialogo6);
     $("#tipo_busqueda").dialog(dialogo7);
 
-    // $("#btnBuscar").click(function (){
-    //     $("#buscar_facturas_venta").dialog("open");   
-    // })
+    $("#btnImprimir").click(function (){  
+        $.ajax({
+            type: "POST",
+            url: "../../procesos/validacion.php",
+            data: "comprobante=" + $("#comprobante").val() + "&tabla=" + "factura_venta" + "&id_tabla=" + "id_factura_venta" + "&tipo=" + 1,
+            success: function(data) {
+                var val = data;
+                if(val != "") {
+                    window.open("../../reportes/factura_venta.php?hoja=A4&id="+$("#comprobante").val(),'_blank');
+                } else {
+                    alertify.alert("Factura no creada!!");
+                }   
+            }
+        });
+    });
 
     $("#btnBuscar").click(function (){
         $("#tipo_busqueda").dialog("open");   
@@ -2950,7 +2948,8 @@ function inicio() {
             $("#adelanto").val("");
             $("#meses").val("");
             $('#cuotas').children().remove().end();
-            $("#cuotas").attr("disabled", true); 
+            $("#cuotas").attr("disabled", true);
+
             $("#list").jqGrid("clearGridData", true);
             $("#total_p").val("0.000");
             $("#total_p2").val("0.000");
@@ -3084,7 +3083,8 @@ function inicio() {
         $("#adelanto").val("");
         $("#meses").val("");
         $('#cuotas').children().remove().end();
-        $("#cuotas").attr("disabled", true); 
+        $("#cuotas").attr("disabled", true);
+
         $("#list").jqGrid("clearGridData", true);
         $("#total_p").val("0.000");
         $("#total_p2").val("0.000");
