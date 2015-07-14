@@ -59,7 +59,7 @@
     $pdf->Text(113, 21, maxCaracter(utf8_decode($nro_fac),20),1,0, 'L',0);
     $pdf->Text(265, 21, maxCaracter(utf8_decode($nro_fac),20),1,0, 'L',0);
     /////////medio
-    $pdf->SetFont('Amble-Regular','',10);       
+    $pdf->SetFont('Amble-Regular','',9);       
     $pdf->Text(30, 48, maxCaracter(utf8_decode($cliente),80),1,0, 'L',0);/////cliente
     $pdf->Text(30, 55, maxCaracter(utf8_decode($direccion),35),1,0, 'L',0);////direccion
     $pdf->Text(113, 55, maxCaracter(utf8_decode($telefono),20),1,0, 'L',0);////telefono
@@ -94,33 +94,61 @@
         $total_si = truncateFloat($total_si,2);
         $total_sit = truncateFloat($total_sit,2);
 
-        $pdf->Text(15, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);    
-        $pdf->Text(25, $yy, maxCaracter(utf8_decode($row[1]),35),0,0, 'L',0);            
-        $pdf->Text(95, $yy, maxCaracter(number_format($total_sit,2,',','.'),6),0,0, 'L',0);            
-        $pdf->Text(120, $yy, maxCaracter(number_format($total_si,2,',','.'),6),0,0, 'L',0);            
+        $pdf->Text(15, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);            
+        $pdf->Text(165, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);                    
 
-        $pdf->Text(165, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);    
-        $pdf->Text(180, $yy, maxCaracter(utf8_decode($row[1]),35),0,0, 'L',0);            
+        $array = ceil_caracter($row[1],35);
+        if(sizeof($array) > 1){
+            $zz = $yy;
+            for($i = 0; $i < sizeof($array); $i++){
+                $pdf->Text(25, $zz, utf8_decode($array[$i]),0,0, 'J',0);                               
+                $pdf->Text(180, $zz, utf8_decode($array[$i]),0,0, 'J',0);                               
+                $zz = $zz + 3;
+            }
+            $yy = $yy + 5;
+        }else{
+            $pdf->Text(25, $yy, maxCaracter(utf8_decode($row[1]),30),0,0, 'L',0);                           
+            $pdf->Text(180, $yy, maxCaracter(utf8_decode($row[1]),30),0,0, 'L',0);                           
+        }                            
+
+        $pdf->Text(95, $yy, maxCaracter(number_format($total_sit,2,',','.'),6),0,0, 'L',0);            
         $pdf->Text(245, $yy, maxCaracter(number_format($total_si,2,',','.'),6),0,0, 'L',0);    
+
+        $pdf->Text(120, $yy, maxCaracter(number_format($total_si,2,',','.'),6),0,0, 'L',0);                                    
         $pdf->Text(270, $yy, maxCaracter(number_format($total_si,2,',','.'),6),0,0, 'L',0);    
-        $yy = $yy + 5;        
+        $yy = $yy + 5;    
+
+        
         
     }
     $sql = pg_query("select cantidad,articulo,precio_venta,total_venta from  detalle_factura_venta,productos where id_factura_venta = '".$_GET['id']."' and detalle_factura_venta.cod_productos = productos.cod_productos and productos.incluye_iva= 'No'");    
     $pdf->SetTextColor(0,0,0);
     while($row = pg_fetch_row($sql)){
-        $temp_1 =  number_format($row[3],2,',','.');
-        $pdf->Text(15, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);    
-        $pdf->Text(25, $yy, maxCaracter(utf8_decode($row[1]),35),0,0, 'L',0);   
-        //$pdf->MultiCell(25,$yy,maxCaracter(utf8_decode($row[1]),35) ,0,'L',false);
-        $pdf->Text(95, $yy, maxCaracter(utf8_decode($row[2]),6),0,0, 'L',0);    
-        $pdf->Text(120, $yy, maxCaracter($temp_1,6),0,0, 'L',0);            
+        $temp_1 =  number_format($row[3],2,',','.');        
+        $pdf->Text(15, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);                                                    
+        $pdf->Text(165, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);                  
 
-        $pdf->Text(165, $yy, maxCaracter(utf8_decode($row[0]),3),0,1, 'L',0);    
-        $pdf->Text(180, $yy, maxCaracter(utf8_decode($row[1]),35),0,0, 'L',0);    
+        $array = ceil_caracter($row[1],35);
+        if(sizeof($array) > 1){
+            $zz = $yy;
+            for($i = 0; $i < sizeof($array); $i++){
+                $pdf->Text(25, $zz, utf8_decode($array[$i]),0,0, 'J',0);                               
+                $pdf->Text(180, $zz, utf8_decode($array[$i]),0,0, 'J',0);                               
+                $zz = $zz + 3;
+            }
+            $yy = $yy + 5;
+        }else{
+            $pdf->Text(25, $yy, maxCaracter(utf8_decode($row[1]),30),0,0, 'L',0);                           
+            $pdf->Text(180, $yy, maxCaracter(utf8_decode($row[1]),30),0,0, 'L',0);                           
+        }        
+
+
+        $pdf->Text(95, $yy, maxCaracter(utf8_decode($row[2]),6),0,0, 'L',0);    
         $pdf->Text(245, $yy, maxCaracter(utf8_decode($row[2]),6),0,0, 'L',0);    
+        
+        $pdf->Text(120, $yy, maxCaracter($temp_1,6),0,0, 'L',0);                                    
         $pdf->Text(270, $yy, maxCaracter($temp_1,6),0,0, 'L',0);    
-        $yy = $yy + 5;        
+        $yy = $yy + 5;                                                
         
     }
     /////////pie        
