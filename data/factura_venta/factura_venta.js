@@ -94,6 +94,30 @@ var dialogo5 = {
     hide: "blind"   
 }
 
+var dialogo6 = {
+    autoOpen: false,
+    resizable: false,
+    width: 800,
+    height: 350,
+    modal: true,
+    // position: "top",
+    show: "explode",
+    hide: "blind"
+}
+
+var dialogo7 = {
+    autoOpen: false,
+    resizable: false,
+    width: 300,
+    height: 200,
+    modal: true,
+    position: "top",
+    show: "explode",
+    hide: "blind"
+    
+}
+
+
 function ValidNum(e) {
     if (e.keyCode < 48 || e.keyCode > 57) {
         e.returnValue = false;
@@ -1341,6 +1365,7 @@ function flecha_atras(){
                 $("#telefono_cliente").val("");
                 $("#correo").val("");
 
+                $("#tipo_venta").val("FACTURA");
                 $("#codigo_barras").attr("disabled", "disabled");
                 $("#codigo").attr("disabled", "disabled");
                 $("#producto").attr("disabled", "disabled");
@@ -1484,6 +1509,7 @@ function flecha_siguiente() {
                 $("#telefono_cliente").val("");
                 $("#correo").val("");
 
+                $("#tipo_venta").val("FACTURA");
                 $("#codigo_barras").attr("disabled", "disabled");
                 $("#codigo").attr("disabled", "disabled");
                 $("#producto").attr("disabled", "disabled");
@@ -1804,10 +1830,6 @@ function inicio() {
         });
     });
 
-    $("#btnProforma").click(function (){
-        $("#buscar_proformas").dialog("open");   
-    });
-
     $("#btnNuevo").click(function(e) {
         e.preventDefault();
     });
@@ -1883,10 +1905,30 @@ function inicio() {
     $("#buscar_proformas").dialog(dialogo5);
     $("#clave_permiso").dialog(dialogo3);
     $("#seguro").dialog(dialogo4);
+    $("#buscar_notas_venta").dialog(dialogo6);
+    $("#tipo_busqueda").dialog(dialogo7);
+
+    // $("#btnBuscar").click(function (){
+    //     $("#buscar_facturas_venta").dialog("open");   
+    // })
 
     $("#btnBuscar").click(function (){
-        $("#buscar_facturas_venta").dialog("open");   
-    })
+        $("#tipo_busqueda").dialog("open");   
+    });
+
+    $("#btnTipoBuscar").click(function (){
+        if($("#tipo_venta_busqueda").val() == "FACTURA"){
+           $("#buscar_facturas_venta").dialog("open"); 
+       }else{
+          if($("#tipo_venta_busqueda").val() == "NOTA"){
+           $("#buscar_notas_venta").dialog("open"); 
+         }
+       }
+    });
+
+    $("#btnProforma").click(function (){
+        $("#buscar_proformas").dialog("open");   
+    });
     
     //////////////para precio////////
     $("#p_venta").on("keypress",punto);
@@ -2562,6 +2604,7 @@ function inicio() {
             $("#telefono_cliente").val("");
             $("#correo").val("");
 
+            $("#tipo_venta").val("FACTURA");
             $("#codigo_barras").attr("disabled", "disabled");
             $("#codigo").attr("disabled", "disabled");
             $("#producto").attr("disabled", "disabled");
@@ -2675,6 +2718,7 @@ function inicio() {
                 }
             });
             $("#buscar_facturas_venta").dialog("close");
+            $("#tipo_busqueda").dialog("close");
         } else {
           alertify.alert("Seleccione una Factura");
         }
@@ -2730,6 +2774,7 @@ function inicio() {
         $("#telefono_cliente").val("");
         $("#correo").val("");
 
+        $("#tipo_venta").val("FACTURA");
         $("#codigo_barras").attr("disabled", "disabled");
         $("#codigo").attr("disabled", "disabled");
         $("#producto").attr("disabled", "disabled");
@@ -2841,12 +2886,275 @@ function inicio() {
                 }
             });
             $("#buscar_facturas_venta").dialog("close");
+            $("#tipo_busqueda").dialog("close");
         } else {
           alertify.alert("Seleccione una Factura");
         }
     }
 });
 //////////////////////fin tabla////////////////////////
+
+////////////////////buscador notas ventas/////////////////////////
+        jQuery("#list5").jqGrid({
+        url: 'xmlBuscarNotaVenta.php',
+        datatype: 'xml',
+        colNames: ['ID','IDENTIFICACIÓN','CLIENTE','MONTO TOTAL','FECHA'],
+        colModel: [
+            {name: 'id_facturas_novalidas', index: 'id_facturas_novalidas', editable: false, search: false, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 50},
+            {name: 'identificacion', index: 'identificacion', editable: false, search: true, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 150},
+            {name: 'nombres_cli', index: 'nombres_cli', editable: true, search: true, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 200},
+            {name: 'total_venta', index: 'total_venta', editable: true, search: false, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 100},
+            {name: 'fecha_actual', index: 'fecha_actual', editable: true, search: false, hidden: false, editrules: {edithidden: false}, align: 'center',frozen: true, width: 100},
+        ],
+        rowNum: 30,
+        width: 750,
+        height:220,
+        sortable: true,
+        rowList: [10, 20, 30],
+        pager: jQuery('#pager5'),
+        sortname: 'id_facturas_novalidas',
+        sortorder: 'asc',
+        viewrecords: true,              
+        ondblClickRow: function(){
+        var id = jQuery("#list5").jqGrid('getGridParam', 'selrow');
+        jQuery('#list5').jqGrid('restoreRow', id);
+        
+        if (id) {
+           var ret = jQuery("#list5").jqGrid('getRowData', id);
+           var valor = ret.id_facturas_novalidas;
+         /////////////agregregar datos factura////////
+            $("#comprobante").val(valor);
+            $("#btnGuardar").attr("disabled", true);
+            $("#btnModificar").attr("disabled", true);
+            $("#num_factura").attr("disabled", "disabled");
+            $("#ruc_ci").attr("disabled", "disabled");
+            $("#nombre_cliente").attr("disabled", "disabled");
+            $("#direccion_cliente").attr("disabled", "disabled");
+            $("#telefono_cliente").attr("disabled", "disabled");
+            $("#correo").attr("disabled", "disabled");
+            $("#formas").attr("disabled", true);
+            $("#ruc_ci").val("");
+            $("#nombre_cliente").val("");
+            $("#telefono_cliente").val("");
+            $("#correo").val("");
+            
+            $("#tipo_venta").val("NOTA");
+            $("#codigo").attr("disabled", "disabled");
+            $("#producto").attr("disabled", "disabled");
+            $("#cantidad").attr("disabled", "disabled");
+            $("#p_venta").attr("disabled", "disabled");
+            $("#btncargar").attr("disabled", "disabled");
+            $("#autorizacion").attr("disabled", "disabled");
+            $("#estado h3").remove();
+            $("#formas").val("Contado");
+            $("#adelanto").val("");
+            $("#meses").val("");
+            $('#cuotas').children().remove().end();
+            $("#cuotas").attr("disabled", true); 
+            $("#list").jqGrid("clearGridData", true);
+            $("#total_p").val("0.000");
+            $("#total_p2").val("0.000");
+            $("#iva").val("0.000");
+            $("#desc").val("0.000");
+            $("#tot").val("0.000");
+            
+            $.getJSON('retornar_nota_venta.php?com=' + valor, function(data) {
+                var tama = data.length;
+                if (tama !== 0) {
+                    for (var i = 0; i < tama; i = i + 17) {
+                    $("#fecha_actual").val(data[i]);
+                    $("#hora_actual").val(data[i + 1 ]);
+                    $("#digitador").val(data[i + 2 ] + " " + data[i + 3 ] );
+                    $("#id_cliente").val(data[i + 4]);
+                    $("#ruc_ci").val(data[i + 5]);
+                    $("#nombre_cliente").val(data[i + 6]);
+                    $("#direccion_cliente").val(data[i + 7]);
+                    $("#telefono_cliente").val(data[i + 8]);
+                    $("#correo").val(data[i + 9]);
+
+                    $("#tipo_precio").val(data[i + 10]);
+                    if(data[ i+ 11 ] == "Pasivo"){
+                        $("#estado").append($("<h3>").text("Anulada"));
+                        $("#estado h3").css("color","red");
+                        $("#btnAnular").attr("disabled", "disabled");
+                    }else{
+                        $("#estado h3").remove();
+                        $("#btnAnular").attr("disabled", "disabled");
+                        $("#btnAnular").attr("disabled", false);
+                    }
+
+                    $("#total_p").val(data[i + 12]);
+                    $("#total_p2").val(data[i + 13]);
+                    $("#iva").val(data[i + 14]);
+                    $("#desc").val(data[i + 15]);
+                    $("#tot").val(data[i + 16]);
+                   }
+                }
+            });
+            /////////////////////////////////////////////////// 
+    
+            ////////////////////llamar facturas flechas tercera parte/////
+            $.getJSON('retornar_nota_venta2.php?com=' + valor, function(data) {
+                var tama = data.length;
+                if (tama !== 0) {
+                    for (var i = 0; i < tama; i = i + 9) {
+                        var datarow = {
+                            cod_producto: data[i], 
+                            codigo: data[i + 1], 
+                            detalle: data[i + 2], 
+                            cantidad: data[i + 3], 
+                            precio_u: data[i + 4], 
+                            descuento: data[i + 5], 
+                            total: data[i + 6], 
+                            iva: data[i + 7],
+                            pendiente: data[i + 8]
+                            };
+                        var su = jQuery("#list").jqGrid('addRowData', data[i], datarow);
+                    }
+                }
+            });
+            $("#buscar_notas_venta").dialog("close");
+            $("#tipo_busqueda").dialog("close");
+        } else {
+          alertify.alert("Seleccione una Factura");
+        }
+    }
+        
+        }).jqGrid('navGrid', '#pager5',
+        {
+            add: false,
+            edit: false,
+            del: false,
+            refresh: true,
+            search: true,
+            view: true
+        },{
+            recreateForm: true, closeAfterEdit: true, checkOnUpdate: true, reloadAfterSubmit: true, closeOnEscape: true
+        },
+        {
+            reloadAfterSubmit: true, closeAfterAdd: true, checkOnUpdate: true, closeOnEscape: true,
+            bottominfo: "Todos los campos son obligatorios son obligatorios"
+        },
+        {
+            width: 300, closeOnEscape: true
+        },
+        {
+            closeOnEscape: true,        
+            multipleSearch: false, overlay: false
+        },
+        {
+        },
+        {
+            closeOnEscape: true
+        });
+        
+       jQuery("#list5").jqGrid('navButtonAdd', '#pager5', {caption: "Añadir",
+       onClickButton: function() {
+        var id = jQuery("#list5").jqGrid('getGridParam', 'selrow');
+        jQuery('#list5').jqGrid('restoreRow', id);
+        if (id) {
+        var ret = jQuery("#list5").jqGrid('getRowData', id);
+        var valor = ret.id_facturas_novalidas;
+
+        /////////////agregregar datos nota venta////////
+        $("#comprobante").val(valor);
+        $("#btnGuardar").attr("disabled", true);
+        $("#btnModificar").attr("disabled", true);
+        $("#num_factura").attr("disabled", "disabled");
+        $("#ruc_ci").attr("disabled", "disabled");
+        $("#nombre_cliente").attr("disabled", "disabled");
+        $("#direccion_cliente").attr("disabled", "disabled");
+        $("#telefono_cliente").attr("disabled", "disabled");
+        $("#correo").attr("disabled", "disabled");
+        $("#formas").attr("disabled", true);
+        $("#ruc_ci").val("");
+        $("#nombre_cliente").val("");
+        $("#telefono_cliente").val("");
+        $("#correo").val("");
+
+        $("#tipo_venta").val("NOTA");
+        $("#codigo").attr("disabled", "disabled");
+        $("#producto").attr("disabled", "disabled");
+        $("#cantidad").attr("disabled", "disabled");
+        $("#p_venta").attr("disabled", "disabled");
+        $("#btncargar").attr("disabled", "disabled");
+        $("#autorizacion").attr("disabled", "disabled");
+        $("#estado h3").remove();
+        $("#formas").val("Contado");
+        $("#adelanto").val("");
+        $("#meses").val("");
+        $('#cuotas').children().remove().end();
+        $("#cuotas").attr("disabled", true); 
+        $("#list").jqGrid("clearGridData", true);
+        $("#total_p").val("0.000");
+        $("#total_p2").val("0.000");
+        $("#iva").val("0.000");
+        $("#desc").val("0.000");
+        $("#tot").val("0.000");
+                
+        $.getJSON('retornar_nota_venta.php?com=' + valor, function(data) {
+            var tama = data.length;
+            if (tama !== 0) {
+                for (var i = 0; i < tama; i = i + 17) {
+                $("#fecha_actual").val(data[i]);
+                $("#hora_actual").val(data[i + 1 ]);
+                $("#digitador").val(data[i + 2 ] + " " + data[i + 3 ] );
+                $("#id_cliente").val(data[i + 4]);
+                $("#ruc_ci").val(data[i + 5]);
+                $("#nombre_cliente").val(data[i + 6]);
+                $("#direccion_cliente").val(data[i + 7]);
+                $("#telefono_cliente").val(data[i + 8]);
+                $("#correo").val(data[i + 9]);
+
+                $("#tipo_precio").val(data[i + 10]);
+                if(data[ i+ 11 ] == "Pasivo"){
+                    $("#estado").append($("<h3>").text("Anulada"));
+                    $("#estado h3").css("color","red");
+                    $("#btnAnular").attr("disabled", "disabled");
+                }else{
+                    $("#estado h3").remove();
+                    $("#btnAnular").attr("disabled", "disabled");
+                    $("#btnAnular").attr("disabled", false);
+                }
+
+                $("#total_p").val(data[i + 12]);
+                $("#total_p2").val(data[i + 13]);
+                $("#iva").val(data[i + 14]);
+                $("#desc").val(data[i + 15]);
+                $("#tot").val(data[i + 16]);
+               }
+            }
+        });
+        ///////////////////////////////////////////////////   
+    
+        ////////////////////llamar notas venta/////
+        $.getJSON('retornar_nota_venta2.php?com=' + valor, function(data) {
+            var tama = data.length;
+            if (tama !== 0) {
+                 for (var i = 0; i < tama; i = i + 9) {
+                    var datarow = {
+                        cod_producto: data[i], 
+                        codigo: data[i + 1], 
+                        detalle: data[i + 2], 
+                        cantidad: data[i + 3], 
+                        precio_u: data[i + 4], 
+                        descuento: data[i + 5], 
+                        total: data[i + 6], 
+                        iva: data[i + 7],
+                        pendiente: data[i + 8]
+                        };
+                    var su = jQuery("#list").jqGrid('addRowData', data[i], datarow);
+                }
+            }
+        });
+        $("#buscar_notas_venta").dialog("close");
+        $("#tipo_busqueda").dialog("close");
+        } else {
+          alertify.alert("Seleccione una Factura");
+        }
+    }
+});
+////////////////////////////////////////////////////////////
 
 ////////////tabla series//////////////////////////////
     jQuery("#list3").jqGrid({
