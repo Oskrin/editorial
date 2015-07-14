@@ -32,7 +32,7 @@ if ($cont == 1) {
     $sal = $valor - $pago;
     $saldo = number_format($sal, 2, '.', '');
     
-     pg_query("insert into gastos values('$conta','$_SESSION[id]','$_POST[id_factura_venta]','$_POST[comprobante]','$_POST[fecha_actual]','$_POST[hora_actual]','$_POST[descripcion]','$pago','$saldo','$deci','Activo')");
+    pg_query("insert into gastos values('$conta','$_SESSION[id]','$_POST[id_factura_venta]','$conta','$_POST[fecha_actual]','$_POST[hora_actual]','$_POST[descripcion]','$pago','$saldo','$deci','Activo')");
     $data = 1;  
 } else {
     //////////contador gastos///////
@@ -48,7 +48,7 @@ if ($cont == 1) {
     $valor = number_format($cal, 2, '.', '');
     $pago = number_format($_POST[valor], 2, '.', '');
 /////////////////////////guardar gastos///////////////////
-    pg_query("insert into gastos values('$conta','$_SESSION[id]','$_POST[id_factura_venta]','$_POST[comprobante]','$_POST[fecha_actual]','$_POST[hora_actual]','$_POST[descripcion]','$pago','$valor','$pago','Activo')");
+    pg_query("insert into gastos values('$conta','$_SESSION[id]','$_POST[id_factura_venta]','$conta','$_POST[fecha_actual]','$_POST[hora_actual]','$_POST[descripcion]','$pago','$valor','$pago','Activo')");
     $data = 1;
 }
 
