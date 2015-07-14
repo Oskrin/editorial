@@ -23,7 +23,7 @@ for ($i = 1; $i < $nelem; $i++) {
     //////////////////////////  
     //
     ///guardar series/////
-    pg_query("insert into serie_venta values('$cont1','$_POST[cod_producto]','$_POST[comprobante]','$arreglo1[$i]','','Activo')");
+    pg_query("insert into serie_venta values('$cont1','$_POST[cod_producto]','$cont1','$arreglo1[$i]','','Activo')");
     ////////////////////////////////
     //
     ///////////////////modificar series////////
