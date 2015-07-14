@@ -22,7 +22,7 @@ while ($row = pg_fetch_row($consulta)) {
 $cont1++;
 
 ////////////guardar devolucion compra////////
-pg_query("insert into devolucion_compra values('$cont1','1','$_POST[id_proveedor]','$_SESSION[id]','$_POST[comprobante]','$_POST[fecha_actual]','$_POST[hora_actual]'
+pg_query("insert into devolucion_compra values('$cont1','1','$_POST[id_proveedor]','$_SESSION[id]','$cont1','$_POST[fecha_actual]','$_POST[hora_actual]'
     ,'$_POST[tipo_comprobante]','$_POST[serie]','$_POST[autorizacion]'
     ,'$_POST[tarifa0]','$_POST[tarifa12]','$_POST[iva]','$_POST[desc]','$_POST[tot]','$_POST[observaciones]','Activo')");
 
